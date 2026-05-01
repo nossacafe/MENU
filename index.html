@@ -908,6 +908,177 @@
   white-space: nowrap;
 }
 
+/* ══════════ POPUP DÍA DE LA MADRE ══════════ */
+#dm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(26,20,16,0.72);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+#dm-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+#dm-modal {
+  background: #1a1410;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  max-width: 400px;
+  width: 100%;
+  max-height: calc(100svh - 2rem);
+  overflow-y: auto;
+  box-shadow: 0 24px 72px rgba(0,0,0,0.65);
+  transform: translateY(18px) scale(0.97);
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+  position: relative;
+}
+#dm-overlay.open #dm-modal {
+  transform: translateY(0) scale(1);
+}
+#dm-img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 310px;
+}
+#dm-modal-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: brightness(1.08) contrast(1.06) saturate(1.1);
+}
+#dm-img-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 70px;
+  background: linear-gradient(to bottom, transparent, rgba(26,20,16,0.72));
+  pointer-events: none;
+}
+#dm-modal-body {
+  padding: 1.1rem 1.6rem 1.6rem;
+}
+#dm-label {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mint);
+  border: 1px solid rgba(167,208,214,0.45);
+  border-radius: 100px;
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 1rem;
+}
+#dm-title {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.35rem, 4vw, 1.7rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+#dm-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: rgba(250,250,248,0.72);
+  margin-bottom: 0.75rem;
+  line-height: 1.55;
+}
+#dm-urgency {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d4a96a;
+  margin-bottom: 1.25rem;
+}
+#dm-cta {
+  display: block;
+  width: 100%;
+  background: #1e9e52;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.85rem 1rem;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-bottom: 0.85rem;
+}
+#dm-cta:hover { opacity: 0.88; }
+#dm-dismiss {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  color: rgba(250,250,248,0.58);
+  cursor: pointer;
+  text-align: center;
+  padding: 0.2rem;
+  transition: color 0.2s;
+}
+#dm-dismiss:hover { color: rgba(250,250,248,0.82); }
+#dm-close-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26,20,16,0.6);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: rgba(250,250,248,0.85);
+  font-size: 1rem;
+  line-height: 1;
+  z-index: 10;
+  transition: background 0.2s;
+}
+#dm-close-btn:hover { background: rgba(26,20,16,0.9); }
+@media (max-width: 480px) {
+  #dm-img-wrap { height: 240px; }
+  #dm-modal-body { padding: 0.9rem 1.2rem 1.3rem; }
+  #dm-title { font-size: 1.2rem; }
+  #dm-label { margin-bottom: 0.6rem; }
+  #dm-text { margin-bottom: 0.55rem; }
+  #dm-urgency { margin-bottom: 0.85rem; }
+  #dm-cta { padding: 0.78rem 1rem; margin-bottom: 0.65rem; }
+}
+@media (max-width: 380px) {
+  #dm-img-wrap { height: 200px; }
+  #dm-modal-body { padding: 0.8rem 1rem 1.1rem; }
+  #dm-title { font-size: 1.1rem; }
+  #dm-label { font-size: 0.6rem; margin-bottom: 0.5rem; }
+  #dm-text { font-size: 0.83rem; margin-bottom: 0.5rem; }
+  #dm-urgency { font-size: 0.65rem; margin-bottom: 0.7rem; }
+  #dm-cta { padding: 0.72rem 1rem; margin-bottom: 0.5rem; font-size: 0.85rem; }
+}
+
 </style>
 </head>
 <body>
@@ -953,7 +1124,7 @@
 <!-- COMBINACIONES PERFECTAS -->
 <section class="maridajes" id="combinaciones">
   <div class="section-header">
-    <p class="section-label">Nuestros Combos</p>
+    <p class="section-label">Combinaciones Perfectas</p>
     <h2 class="section-title">Combinaciones<br><em>Perfectas.</em></h2>
     <p class="section-desc">Elige tu estilo. Nosotros hacemos el maridaje.</p>
   </div>
@@ -962,7 +1133,7 @@
 
     <!-- COMBO 1: NOSSA CLÁSICO -->
     <div style="background:rgba(167,208,214,0.07);border:1px solid rgba(167,208,214,0.2);border-radius:8px;padding:1.5rem;" id="combo-clasico">
-      <span style="display:inline-block;background:var(--mint);color:var(--black);font-size:0.45rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:100px;font-weight:500;margin-bottom:0.75rem;">Nossa Clásico</span>
+      <span style="display:inline-block;background:var(--mint);color:var(--black);font-size:0.45rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:100px;font-weight:500;margin-bottom:0.75rem;">Nossa Raíz</span>
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
         <div>
           <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:1.2rem;color:var(--white);line-height:1.2;">Torta Zanahoria</p>
@@ -978,17 +1149,17 @@
         <button onclick="c1Pick(this,'cappuccino')" class="combo-opt combo-opt-active" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;cursor:pointer;transition:all 0.2s;border:1.5px solid var(--mint);background:rgba(167,208,214,0.15);color:var(--white);">☕ Cappuccino</button>
         <button onclick="c1Pick(this,'latte')" class="combo-opt" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;cursor:pointer;transition:all 0.2s;border:1.5px solid rgba(167,208,214,0.25);background:transparent;color:rgba(255,255,255,0.5);">☕ Latte</button>
       </div>
-      <p style="font-family:'DM Sans',sans-serif;font-style:italic;font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.5;margin-bottom:1rem;" id="c1-desc">Las especias de la zanahoria encuentran su equilibrio en la espuma del cappuccino. El combo con el que empezó todo.</p>
+      <p style="font-family:'DM Sans',sans-serif;font-style:italic;font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.5;margin-bottom:1rem;" id="c1-desc">Las especias de la zanahoria encuentran su equilibrio en la espuma del cappuccino. La combinación con la que empezó todo.</p>
       <div style="background:rgba(167,208,214,0.1);border-radius:6px;padding:0.6rem 0.8rem;margin-bottom:0.85rem;display:flex;align-items:center;gap:0.5rem;">
         <span style="font-size:1rem;">💬</span>
-        <p style="font-family:'DM Sans',sans-serif;font-size:0.7rem;color:var(--white);line-height:1.4;">Pídelo como <strong style="color:var(--mint);">"Nossa Clásico"</strong> y obtén el precio combo.</p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.7rem;color:var(--white);line-height:1.4;">Pídelo como <strong style="color:var(--mint);">"Nossa Raíz"</strong> y obtén el precio de combinación.</p>
       </div>
       <a id="c1-wa" href="#" target="_blank" style="display:block;text-align:center;color:var(--mint);padding:0.5rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(167,208,214,0.3);">¿No estás en Nossa? Pide por WhatsApp →</a>
     </div>
 
     <!-- COMBO 2: NOSSA TROPICAL -->
     <div style="background:rgba(167,208,214,0.07);border:1px solid rgba(167,208,214,0.2);border-radius:8px;padding:1.5rem;" id="combo-tropical">
-      <span style="display:inline-block;background:var(--mint);color:var(--black);font-size:0.45rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:100px;font-weight:500;margin-bottom:0.75rem;">Nossa Tropical</span>
+      <span style="display:inline-block;background:var(--mint);color:var(--black);font-size:0.45rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:100px;font-weight:500;margin-bottom:0.75rem;">Nossa Brisa</span>
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
         <div>
           <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:1.2rem;color:var(--white);line-height:1.2;">Postre de Guayaba</p>
@@ -1004,17 +1175,17 @@
         <button onclick="c2Pick(this,'rooibos')" class="combo-opt combo-opt-active" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;cursor:pointer;transition:all 0.2s;border:1.5px solid var(--mint);background:rgba(167,208,214,0.15);color:var(--white);">🍵 Rooibos</button>
         <button onclick="c2Pick(this,'aromatica')" class="combo-opt" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;cursor:pointer;transition:all 0.2s;border:1.5px solid rgba(167,208,214,0.25);background:transparent;color:rgba(255,255,255,0.5);">🌿 Aromática</button>
       </div>
-      <p style="font-family:'DM Sans',sans-serif;font-style:italic;font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.5;margin-bottom:1rem;" id="c2-desc">Guayaba colombiana y rooibos sudafricano. Dulzura tropical sin cafeína. El combo más Nossa que existe.</p>
+      <p style="font-family:'DM Sans',sans-serif;font-style:italic;font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.5;margin-bottom:1rem;" id="c2-desc">Guayaba colombiana y rooibos sudafricano. Dulzura tropical sin cafeína. La combinación más Nossa que existe.</p>
       <div style="background:rgba(167,208,214,0.1);border-radius:6px;padding:0.6rem 0.8rem;margin-bottom:0.85rem;display:flex;align-items:center;gap:0.5rem;">
         <span style="font-size:1rem;">💬</span>
-        <p style="font-family:'DM Sans',sans-serif;font-size:0.7rem;color:var(--white);line-height:1.4;">Pídelo como <strong style="color:var(--mint);">"Nossa Tropical"</strong> y obtén el precio combo.</p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.7rem;color:var(--white);line-height:1.4;">Pídelo como <strong style="color:var(--mint);">"Nossa Brisa"</strong> y obtén el precio de combinación.</p>
       </div>
       <a id="c2-wa" href="#" target="_blank" style="display:block;text-align:center;color:var(--mint);padding:0.5rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(167,208,214,0.3);">¿No estás en Nossa? Pide por WhatsApp →</a>
     </div>
 
     <!-- COMBO 3: NOSSA VARIETAL -->
     <div style="background:rgba(167,208,214,0.07);border:1px solid rgba(167,208,214,0.2);border-radius:8px;padding:1.5rem;" id="combo-varietal">
-      <span style="display:inline-block;background:var(--mint);color:var(--black);font-size:0.45rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:100px;font-weight:500;margin-bottom:0.75rem;">Nossa Varietal</span>
+      <span style="display:inline-block;background:var(--mint);color:var(--black);font-size:0.45rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:100px;font-weight:500;margin-bottom:0.75rem;">Nossa Origen</span>
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
         <div>
           <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:1.2rem;color:var(--white);line-height:1.2;" id="c3-pastel">Fresita</p>
@@ -1034,7 +1205,7 @@
       <p style="font-family:'DM Sans',sans-serif;font-style:italic;font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.5;margin-bottom:1rem;" id="c3-desc">Perfil natural: notas a frutos rojos. La Fresita amplifica esa dulzura frutal con tonka y chocolate blanco.</p>
       <div style="background:rgba(167,208,214,0.1);border-radius:6px;padding:0.6rem 0.8rem;margin-bottom:0.85rem;display:flex;align-items:center;gap:0.5rem;">
         <span style="font-size:1rem;">💬</span>
-        <p style="font-family:'DM Sans',sans-serif;font-size:0.7rem;color:var(--white);line-height:1.4;">Pídelo como <strong style="color:var(--mint);">"Nossa Varietal"</strong> y menciona el perfil.</p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.7rem;color:var(--white);line-height:1.4;">Pídelo como <strong style="color:var(--mint);">"Nossa Origen"</strong> y menciona el perfil.</p>
       </div>
       <a id="c3-wa" href="#" target="_blank" style="display:block;text-align:center;color:var(--mint);padding:0.5rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(167,208,214,0.3);">¿No estás en Nossa? Pide por WhatsApp →</a>
     </div>
@@ -1057,24 +1228,24 @@ function comboToggle(btn, container) {
 function c1Pick(btn, key) {
   comboToggle(btn, document.getElementById('combo-clasico'));
   var d = {
-    cappuccino: { drink:'+ Cappuccino', desc:'Las especias de la zanahoria encuentran su equilibrio en la espuma del cappuccino. El combo con el que empezó todo.', wa:'Cappuccino' },
+    cappuccino: { drink:'+ Cappuccino', desc:'Las especias de la zanahoria encuentran su equilibrio en la espuma del cappuccino. La combinación con la que empezó todo.', wa:'Cappuccino' },
     latte: { drink:'+ Latte', desc:'Lo cremoso del latte envuelve las especias de la zanahoria. Suave, reconfortante, perfecto a cualquier hora.', wa:'Latte' }
   }[key];
   document.getElementById('c1-drink').textContent = d.drink;
   document.getElementById('c1-desc').textContent = d.desc;
-  document.getElementById('c1-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Clásico con ' + d.wa + ' 🥕☕');
+  document.getElementById('c1-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Raíz con ' + d.wa + ' 🥕☕');
 }
 function c2Pick(btn, key) {
   comboToggle(btn, document.getElementById('combo-tropical'));
   var d = {
-    rooibos: { drink:'+ Rooibos', old:'$26.000', price:'$25.000', desc:'Guayaba colombiana y rooibos sudafricano. Dulzura tropical sin cafeína. El combo más Nossa que existe.', wa:'Rooibos' },
+    rooibos: { drink:'+ Rooibos', old:'$26.000', price:'$25.000', desc:'Guayaba colombiana y rooibos sudafricano. Dulzura tropical sin cafeína. La combinación más Nossa que existe.', wa:'Rooibos' },
     aromatica: { drink:'+ Aromática de Frutas', old:'$23.500', price:'$22.500', desc:'Frutas confitadas en infusión y guayaba fresca. Un abrazo tropical completo, sin una gota de cafeína.', wa:'Aromática de Frutas' }
   }[key];
   document.getElementById('c2-drink').textContent = d.drink;
   document.getElementById('c2-old').textContent = d.old;
   document.getElementById('c2-price').textContent = d.price;
   document.getElementById('c2-desc').textContent = d.desc;
-  document.getElementById('c2-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Tropical con ' + d.wa + ' 💚');
+  document.getElementById('c2-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Brisa con ' + d.wa + ' 💚');
 }
 function c3Pick(btn, key) {
   comboToggle(btn, document.getElementById('combo-varietal'));
@@ -1085,13 +1256,13 @@ function c3Pick(btn, key) {
   }[key];
   document.getElementById('c3-pastel').textContent = d.pastel;
   document.getElementById('c3-desc').textContent = d.desc;
-  document.getElementById('c3-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Varietal perfil ' + d.wa + ' ☕' + d.emoji);
+  document.getElementById('c3-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Origen perfil ' + d.wa + ' ☕' + d.emoji);
 }
 // Init WA links on load
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('c1-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Clásico con Cappuccino 🥕☕');
-  document.getElementById('c2-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Tropical con Rooibos 💚');
-  document.getElementById('c3-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Varietal perfil Natural (Fresita + Filtrado) ☕🍓');
+  document.getElementById('c1-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Raíz con Cappuccino 🥕☕');
+  document.getElementById('c2-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Brisa con Rooibos 💚');
+  document.getElementById('c3-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Origen perfil Natural (Fresita + Filtrado) ☕🍓');
 });
 </script>
 
@@ -1377,6 +1548,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </div><!-- end menu-wrapper -->
 
+<!-- NOSSA NOTE — Café en bolsa, tartas y tortas -->
+<section style="background:var(--cream);padding:3rem 1.5rem;">
+  <div style="max-width:480px;margin:0 auto;background:var(--white);border-left:3px solid var(--mint-dark);border-radius:0 6px 6px 0;padding:1.5rem 1.5rem 1.25rem;">
+    <p style="font-family:'DM Sans',sans-serif;font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--mint-dark);margin-bottom:0.5rem;font-weight:500;">Nossa Note</p>
+    <p style="font-family:'DM Sans',sans-serif;font-size:1rem;color:var(--text-body);line-height:1.6;margin-bottom:1.25rem;">También puedes llevar Nossa a casa: <strong>café en bolsa</strong>, <strong>tartas</strong> y <strong>tortas grandes</strong> por encargo. Consulta disponibilidad por WhatsApp.</p>
+    <a href="https://wa.me/573150686150?text=%C2%A1Hola%20Nossa!%20Quiero%20consultar%20disponibilidad%20de%20caf%C3%A9%20en%20bolsa%20%2F%20tartas%20%2F%20tortas%20grandes%20%F0%9F%8C%BF" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--black);color:var(--white);padding:0.7rem 1.5rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Consultar por WhatsApp →</a>
+  </div>
+</section>
+
 <!-- NOSSA+ -->
 <section class="nossa-plus" id="nossaplus">
   <h2 class="np-title">nossa<span>+</span></h2>
@@ -1396,11 +1576,46 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="np-step">
       <div class="np-step-num">3</div>
       <p class="np-step-name">Disfruta</p>
-      <p class="np-step-desc">Pide lo de siempre. En el décimo combo, Nossa invita.</p>
+      <p class="np-step-desc">Pide lo de siempre. En la décima combinación, Nossa invita.</p>
     </div>
   </div>
 
   <a class="np-cta" href="#">Pide tu tarjeta Nossa+ en caja</a>
+</section>
+
+<!-- ¿NO SABES QUÉ PEDIR? -->
+<section style="background:var(--white);padding:3.5rem 1.5rem;">
+  <div style="max-width:480px;margin:0 auto;text-align:center;">
+    <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:clamp(1.6rem,5vw,2rem);color:var(--black);line-height:1.2;margin-bottom:0.5rem;">¿No sabes qué pedir?</p>
+    <p style="font-family:'DM Sans',sans-serif;font-style:italic;font-size:1rem;color:var(--text-muted);margin-bottom:1.5rem;">Te ayudamos a elegir según tu antojo.</p>
+    <button id="antojo-btn" onclick="document.getElementById('antojo-panel').style.display=document.getElementById('antojo-panel').style.display==='none'?'block':'none';this.textContent=document.getElementById('antojo-panel').style.display==='none'?'Ayúdame a elegir':'Cerrar sugerencias'" style="background:var(--mint);color:var(--black);border:none;padding:0.85rem 2rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:opacity 0.2s;margin-bottom:1.5rem;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Ayúdame a elegir</button>
+    <div id="antojo-panel" style="display:none;text-align:left;">
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        <div style="border:1px solid var(--mint-light);border-radius:8px;padding:1rem 1.25rem;">
+          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;color:var(--black);margin-bottom:0.25rem;">☁️ Algo suave</p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text-muted);line-height:1.5;">Torta Zanahoria + Latte. Dulzura cálida sin sobresaltos.</p>
+        </div>
+        <div style="border:1px solid var(--mint-light);border-radius:8px;padding:1rem 1.25rem;">
+          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;color:var(--black);margin-bottom:0.25rem;">🌿 Algo fresco</p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text-muted);line-height:1.5;">Postre de Guayaba + Rooibos. Tropical y ligero.</p>
+        </div>
+        <div style="border:1px solid var(--mint-light);border-radius:8px;padding:1rem 1.25rem;">
+          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;color:var(--black);margin-bottom:0.25rem;">🔥 Algo intenso</p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text-muted);line-height:1.5;">Tarta de Arándanos + Filtrado Natural. Carácter en cada sorbo.</p>
+        </div>
+        <div style="border:1px solid var(--mint-light);border-radius:8px;padding:1rem 1.25rem;">
+          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;color:var(--black);margin-bottom:0.25rem;">🤝 Algo para compartir</p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text-muted);line-height:1.5;">Éclairs variados + Cappuccinos. Ideal para la mesa.</p>
+        </div>
+        <div style="border:1px solid var(--mint-light);border-radius:8px;padding:1rem 1.25rem;">
+          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;color:var(--black);margin-bottom:0.25rem;">🏠 Algo para llevar</p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text-muted);line-height:1.5;">Café en bolsa Nossa + Tarta grande por encargo.</p>
+          <a href="https://wa.me/573150686150?text=%C2%A1Hola%20Nossa!%20Quiero%20consultar%20opciones%20para%20llevar%20%F0%9F%8F%A0" target="_blank" style="display:inline-block;margin-top:0.5rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;color:var(--mint-dark);text-decoration:none;font-weight:500;">Consultar por WhatsApp →</a>
+        </div>
+      </div>
+      <p style="font-family:'DM Sans',sans-serif;font-style:italic;font-size:0.88rem;color:var(--text-muted);margin-top:1.5rem;text-align:center;line-height:1.5;">O pídele al mesero tu combinación perfecta.</p>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -1568,7 +1783,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <!-- PASO 1 — Bebida -->
   <div class="sp-step active" id="sp-s1">
     <p class="sp-q">¿Qué bebida te llama hoy?</p>
-    <p class="sp-sub">Elige según tu ánimo — te construimos el combo perfecto</p>
+    <p class="sp-sub">Elige según tu ánimo — te construimos la combinación perfecta</p>
     <div class="sp-opts cols-3">
       <div class="sp-opt" onclick="spPick(1,'cappuccino')">
         <span class="sp-emoji">☕</span>Cappuccino
@@ -1633,7 +1848,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <!-- RESULTADO -->
   <div id="sp-result">
-    <div class="sp-res-label">✦ Tu combo Nossa perfecto</div>
+    <div class="sp-res-label">✦ Tu combinación Nossa perfecta</div>
     <div class="sp-res-combo" id="sp-res-combo">—</div>
     <div class="sp-res-why" id="sp-res-why">—</div>
     <div class="sp-res-price" id="sp-res-price">—</div>
@@ -1727,11 +1942,11 @@ const SP_WHY = {
   filtrado_aran: 'Acidez sobre acidez, cada una en su registro. El más elegante del menú.',
   tinto_lulo: 'Lo más nuestro del café con lo más inesperado de la fruta. Audaz.',
   tinto_choc: 'Intensidad honesta. Tinto de Colombia, chocolate 70%. Sin disculpas.',
-  rooibos_aran: 'La fruta y lo floral, sin cafeína. El combo más delicado de Nossa.',
+  rooibos_aran: 'La fruta y lo floral, sin cafeína. La combinación más delicada de Nossa.',
   rooibos_estr: 'Coco y rooibos comparten suavidad tropical. Sin cafeína, toda la personalidad.',
   rooibos_mango: 'Mango y rooibos comparten dulzura tropical. Sorprende siempre.',
   chocolate_tres: 'Dos veces suave, dos veces reconfortante. Para días difíciles.',
-  default: 'Nuestro barista lo combinó por intuición. A veces los mejores combos no necesitan explicación.',
+  default: 'Nuestro barista lo combinó por intuición. A veces las mejores combinaciones no necesitan explicación.',
 };
 
 function spGetWhy(beb, id) {
@@ -1802,7 +2017,7 @@ function spShow() {
 
   const wa = document.getElementById('sp-res-wa');
   const msg = encodeURIComponent(
-    '¡Hola Nossa! Quiero pedir un combo: ' + item.nombre + ' + ' + beb.nombre + ' 🎉'
+    '¡Hola Nossa! Quiero pedir una combinación: ' + item.nombre + ' + ' + beb.nombre + ' 🎉'
   );
   wa.onclick = () => window.open('https://wa.me/573150686150?text='+msg,'_blank');
 
@@ -1848,7 +2063,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const tag = document.createElement('div');
     tag.className = 'combo-tag';
-    tag.innerHTML = `<span>✦ Combo con</span>
+    tag.innerHTML = `<span>✦ Combinación con</span>
       <span class="combo-pill">${c.beb}</span>
       <span class="combo-price">$${total}</span>`;
     // Append after desc or inside item desc
@@ -1866,6 +2081,104 @@ document.addEventListener('DOMContentLoaded', () => {
   panel.addEventListener('touchend', e=>{
     if(e.changedTouches[0].clientY-sY>70) spClose();
   },{passive:true});
+})();
+</script>
+
+<!-- ══════════════════════════════════════════════════════
+     POPUP DE CAMPAÑA — CONFIGURACIÓN EDITABLE
+     ══════════════════════════════════════════════════════
+     Para apagar el popup:        enabled: false
+     Para cambiar de campaña:     editar solo este bloque
+     Para cambiar la imagen:      reemplazar imgSrc con la
+                                  ruta del nuevo archivo
+     ══════════════════════════════════════════════════════ -->
+<script>
+const DM_CONFIG = {
+
+  // Activa o desactiva el popup. false = no aparece.
+  enabled:  true,
+
+  // Etiqueta pequeña sobre el título (ej. "Edición Navidad")
+  label:    "Edición Día de la Madre",
+
+  // Título principal del modal
+  title:    "Celebra a mamá con algo que sí recordará",
+
+  // Descripción breve del producto o promoción
+  text:     "Torta especial por encargo para compartir en casa.",
+
+  // Línea de urgencia bajo el texto (uppercase automático)
+  urgency:  "Últimos pedidos para Día de la Madre",
+
+  // Texto visible del botón de WhatsApp
+  ctaText:  "Pedir por WhatsApp",
+
+  // Mensaje que llega prellenado al chat de WhatsApp
+  // Cambia solo el texto dentro de encodeURIComponent("...")
+  ctaHref:  "https://wa.me/573150686150?text=" + encodeURIComponent("Hola, quiero encargar la torta especial de Día de la Madre."),
+
+  // Ruta de la imagen del producto (relativa al HTML)
+  // Reemplazar por la imagen de la nueva campaña
+  imgSrc:   "assets/producto-dia-madre-opt.jpg",
+
+  // Texto alternativo de la imagen (accesibilidad y SEO)
+  imgAlt:   "Torta especial Día de la Madre — Nossa Pastel",
+
+};
+</script>
+
+<div id="dm-overlay" role="dialog" aria-modal="true" aria-label="Campaña Día de la Madre">
+  <div id="dm-modal">
+    <div id="dm-img-wrap">
+      <button id="dm-close-btn" onclick="dmClose()" aria-label="Cerrar">&#x2715;</button>
+      <img id="dm-modal-img" src="" alt="" loading="eager">
+    </div>
+    <div id="dm-modal-body">
+      <span id="dm-label"></span>
+      <h2 id="dm-title"></h2>
+      <p id="dm-text"></p>
+      <p id="dm-urgency"></p>
+      <a id="dm-cta" href="#" target="_blank" rel="noopener"></a>
+      <button id="dm-dismiss" onclick="dmClose()">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const SESSION_KEY = 'dm_popup_closed';
+
+  function dmRender() {
+    document.getElementById('dm-modal-img').src = DM_CONFIG.imgSrc;
+    document.getElementById('dm-modal-img').alt = DM_CONFIG.imgAlt;
+    document.getElementById('dm-label').textContent = DM_CONFIG.label;
+    document.getElementById('dm-title').textContent = DM_CONFIG.title;
+    document.getElementById('dm-text').textContent  = DM_CONFIG.text;
+    document.getElementById('dm-urgency').textContent = DM_CONFIG.urgency;
+    document.getElementById('dm-cta').textContent  = DM_CONFIG.ctaText;
+    document.getElementById('dm-cta').href         = DM_CONFIG.ctaHref;
+  }
+
+  window.dmClose = function () {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    document.getElementById('dm-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!DM_CONFIG.enabled) return;
+    if (sessionStorage.getItem(SESSION_KEY)) return;
+    dmRender();
+    setTimeout(function () {
+      document.getElementById('dm-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }, 600);
+  });
+
+  // Cierra al hacer clic en el overlay fuera del modal
+  document.getElementById('dm-overlay').addEventListener('click', function (e) {
+    if (e.target === this) dmClose();
+  });
 })();
 </script>
 
