@@ -43,8 +43,8 @@
 
   /* ─── HERO ─── */
   .hero {
-    background: var(--black);
-    min-height: 50svh;
+    background: #FAF8F5;
+    min-height: 42svh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,8 +65,8 @@
 
   /* ─── BRAND STATEMENT ─── */
   .brand-statement {
-    background: var(--mint);
-    padding: 4rem 2rem;
+    background: rgba(167,208,214,0.42);
+    padding: 0.8rem 1.5rem;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -77,7 +77,7 @@
     position: absolute;
     inset: 0;
     background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 C15 5 5 15 5 30 C5 45 15 55 30 55 C45 55 55 45 55 30 C55 15 45 5 30 5Z' fill='none' stroke='rgba(0,0,0,0.06)' stroke-width='0.5'/%3E%3C/svg%3E") repeat;
-    opacity: 0.5;
+    opacity: 0.1;
   }
 
   .brand-statement-inner {
@@ -92,17 +92,17 @@
     text-transform: uppercase;
     color: var(--black);
     opacity: 0.5;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .bs-quote {
     font-family: 'DM Sans', sans-serif;
     font-style: italic;
     font-weight: 300;
-    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    font-size: clamp(0.95rem, 3.2vw, 1.25rem);
     color: var(--black);
     line-height: 1.3;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
   }
 
   .bs-pills {
@@ -602,6 +602,7 @@
   right: 0;
   z-index: 1001;
   background: #faf9f7;
+  border-top: 2px solid rgba(167,208,214,0.35);
   border-radius: 1.25rem 1.25rem 0 0;
   padding: 2rem 1.5rem 2.5rem;
   transform: translateY(100%);
@@ -610,11 +611,23 @@
   overflow-y: auto;
 }
 #pv-panel.open { transform: translateY(0); }
+#pv-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('assets/patterns_s_azul.svg');
+  background-repeat: repeat;
+  background-size: 120px 120px;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: inherit;
+}
 
 .pv-handle {
   width: 2.5rem;
   height: 3px;
-  background: #ccc;
+  background: rgba(167,208,214,0.55);
   border-radius: 2px;
   margin: 0 auto 1.75rem;
 }
@@ -647,10 +660,11 @@
 .pv-section-label {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.55rem;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: #999;
+  color: var(--mint-dark);
   margin-bottom: 1rem;
+  padding-top: 0.25rem;
 }
 .pv-item {
   display: flex;
@@ -690,7 +704,8 @@
   font-family: 'DM Sans', sans-serif;
   font-size: 0.85rem;
   font-style: italic;
-  color: #999;
+  color: var(--mint-dark);
+  opacity: 0.8;
 }
 .pv-close {
   display: block;
@@ -699,14 +714,16 @@
   background: var(--black);
   color: #faf9f7;
   border: none;
-  border-radius: 0.5rem;
-  padding: 0.85rem;
+  border-radius: 2rem;
+  padding: 0.9rem;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.7rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   cursor: pointer;
+  transition: opacity 0.2s;
 }
+.pv-close:hover { opacity: 0.78; }
 
 /* ── MARIDAJE INTERACTIVO ── */
 .mari-filter::-webkit-scrollbar { display: none; }
@@ -717,8 +734,8 @@
 /* ── Botón flotante Sorpréndeme ── */
 #sp-btn {
   position: fixed;
-  bottom: 5.2rem;
-  right: 1rem;
+  bottom: 5.75rem;
+  right: 1.25rem;
   z-index: 900;
   background: #1a1410;
   color: #fff;
@@ -753,6 +770,7 @@
   bottom: 0; left: 0; right: 0;
   z-index: 1101;
   background: #faf8f4;
+  border-top: 2px solid rgba(167,208,214,0.35);
   border-radius: 1.4rem 1.4rem 0 0;
   padding: 1.5rem 1.2rem 2.2rem;
   transform: translateY(100%);
@@ -761,10 +779,22 @@
   overflow-y: auto;
 }
 #sp-panel.open { transform: translateY(0); }
+#sp-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('assets/patterns_s_azul.svg');
+  background-repeat: repeat;
+  background-size: 120px 120px;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: inherit;
+}
 
 .sp-handle {
   width: 2.4rem; height: 0.28rem;
-  background: #d4cfc8;
+  background: rgba(167,208,214,0.5);
   border-radius: 2px;
   margin: 0 auto 1.2rem;
 }
@@ -773,42 +803,54 @@
 
 .sp-q {
   font-size: 1.05rem;
-  font-weight:500;
+  font-weight: 400;
   color: #1a1410;
   margin-bottom: 0.25rem;
   line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 .sp-sub {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: #8c8077;
   margin-bottom: 1.1rem;
+  font-style: italic;
 }
 
 /* ── opciones ── */
 .sp-opts {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.55rem;
+  gap: 0.6rem;
   margin-bottom: 1.2rem;
 }
 .sp-opts.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
 .sp-opt {
-  border: 1.5px solid #e4dfd8;
-  border-radius: 0.9rem;
-  padding: 0.75rem 0.5rem;
+  border: 1px solid rgba(167,208,214,0.38);
+  border-radius: 0.75rem;
+  padding: 0.85rem 0.5rem;
   text-align: center;
   cursor: pointer;
-  background: #fff;
-  transition: border-color 0.15s, background 0.15s;
-  font-size: 0.82rem;
+  background: rgba(255,255,255,0.82);
+  transition: border-color 0.18s, background 0.18s, transform 0.12s;
+  font-size: 0.8rem;
   color: #1a1410;
-  line-height: 1.3;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
 }
 .sp-opt .sp-emoji { font-size: 1.4rem; display: block; margin-bottom: 0.25rem; }
-.sp-opt.selected,
+.sp-opt:hover {
+  border-color: rgba(167,208,214,0.7);
+  background: rgba(167,208,214,0.08);
+}
+.sp-opt.selected {
+  border-color: #A7D0D6;
+  border-width: 1.5px;
+  background: rgba(167,208,214,0.13);
+}
 .sp-opt:active {
   border-color: #A7D0D6;
-  background: #eef8f9;
+  background: rgba(167,208,214,0.13);
+  transform: scale(0.97);
 }
 
 /* ── resultado ── */
@@ -870,18 +912,23 @@
 }
 .sp-progress {
   display: flex;
-  gap: 0.3rem;
+  gap: 0.35rem;
   justify-content: center;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.3rem;
+  align-items: center;
 }
 .sp-dot {
-  width: 0.45rem; height: 0.45rem;
+  width: 0.4rem; height: 0.4rem;
   border-radius: 50%;
-  background: #d4cfd8;
-  transition: background 0.2s;
+  background: rgba(167,208,214,0.25);
+  transition: background 0.2s, transform 0.2s, width 0.2s;
 }
 .sp-dot.done { background: #A7D0D6; }
-.sp-dot.active { background: #1a1410; }
+.sp-dot.active {
+  background: #1a1410;
+  width: 1.1rem;
+  border-radius: 2px;
+}
 
 /* ── Combo sugerido en items de postres ── */
 .combo-tag {
@@ -1090,14 +1137,23 @@
 <body>
 
 <!-- HERO -->
-<section class="hero" style="background:#1a1410;min-height:50svh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+<section class="hero" style="background:#FAF8F5;min-height:42svh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;">
   <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAE7AlgDASIAAhEBAxEB/8QAHAABAAIDAQEBAAAAAAAAAAAAAAUGAQQHAgMI/8QAQBAAAQQBAQYDBgUDAwIFBQAAAQACAwQRBQYSITFBURNhcSJCUmKRoQcUMoHBI7HRFTPhcoIWJENTkxc0VKLw/8QAGAEBAQEBAQAAAAAAAAAAAAAAAAECAwT/xAAgEQEBAAICAwEBAQEAAAAAAAAAAQIRAxIxQVEhEyIy/9oADAMBAAIRAxEAPwDcBBGRxCyub1tSu1f9iw9o7ZyPopirtZOzAtQNkHUt4FXtHK8dXBFE1NotOs4aZfCeekgx91KMeyRu9G5rh3BytSsXGx6TmiIjSt6VRuA+NXZvH3m8CoS3sk05NOwR8sg/lWhFLGpnY55b0XUKhPiV3Ob8TPaC0CCDgjBXUlqWtNpW8+PXY49wMFTq6Tl+uborfa2Tgfk1Z3Rn4XjIUNb2e1Gtk+F4rR1jOVnVdJnKiUXp7Hxu3ZGuaezhheVGhet49ePqvKIPWWnpj0THYgrCIBBHMLCyCRyKzkdQg8ovWGnkceqxun1QYRZ5LCAiIgIiICIiAiIgIiICIiAiIgzk9eKzlvbHovKIPWAeRH9lggjmEQEjkVRhF63s8wCns9iFBhj3sdvMc5pHUHCka2u6lW4NsF47PGVH47ELGD1CqalWettc4YFqsD8zD/Cla20Wmz4HjGN3Z4wqEivasXjjp8U0UwzFIx4+U5X0XL45ZInb0UjmHu04UjW2g1KvgCfxAOjxlWZMXivpf1hzWuGHAEdiqrX2ucMCzVB7ljv4UrX2j02fAMxjJ6PGFdxnplGxY0fT7OTJVZnu3gVFWdkqzxmvO+M9ncQp+KeGYAxSseD8LgV9EsidrFIsbL6hFkxbkw+U4P0Ki56VqscT15GY7tXS1ggOGHAEdip1jc5a5ai6LY0jT7OfFqx5PVowVGWNk6j8mvNJEex9oKda1OSVVIbdmucwzyM9HKSr7TajDjfeyUfM1fSxstfjyYjHM3yOCouxp9yscT1pG+e7wU/Y1/mrJX2tidgWazmnqWHIUpX13TbGN2yGk9HjC591RXtUvHK6iyRkgzG9rh5HK9LmEU0sJzFK9h+VxCkK+0GpQY/r+IB0eMq9mLxX0v6Kp19r3jAs1Qe5Y7/Kk6+02mzcHvfEfnCu2LhYmUIB5gH1XwhuVbAzDYjf6OC+6qNOxpdCz/u1Yye4GCo2xspRkyYXyxH1yFPImlmVimz7J22ZME0Ug7HgVG2NG1GvnxKryB1bxH2XREWesa/pXLXMcw4e0tPYjCwunS1oJxiaFj/+puVHWNndMm5QmM92HCnVuckUJFa59kW4zXtH0e3/AAida13iqIiLLQvtBasVnb0Ez4z8pXxRDSdqbU3YcCdrJh3PAqaq7UUJsCbehcfiGR9VSEV7Vm4SunQ2YLDd6CZkg+U5X1XLo5JInB0b3McOrThSlXaLUa+AZRK0dJBn7rUyc7xfF9RVyrtZXfgWoXRn4m+0FMVdSpWx/QsMce2cFa3GLjY20REZfGerXsDE8LJB8zVEW9lqMuTAXwu8jkKdRTUqzKxSrWy16LJgcyYeRwVEWKlms4tngewjuF0xYc1r27r2hw7EZU6uk5b7ctRX+1oGm2ckwCNx95hwoi1sk8ZNWwD8rxj7qda3OSVV1lb9rRtQq5MtZ5aPebxC0CCDhwIPmsty7ERYRXrePqnsnmCF5RB6x2IKwQRzCICRyKDCL1kdQE4d8eqDyi9bp6cfRYQYREQEREBERAREQEREBERAREQFkEjkVhEHre7gFDunuF5RBnHYgrBBHMIsgkciUGEXrPcAp7J7hAY98ZzG5zT3BwpCvrupV8BtgvA6PGVH7vYgrBBHMYV2lkWWvtdKMCxVa7zYcKUr7S6bNwe90R+dvD6qionasXjldNhtV7AzDPG8fK5fZcta5zDlpIPkcLer6zqNbHh2nkdncQtdmP5/HRE58DxVPr7W2WYFiBkg7tOCpSvtTp8uBLvwnzGR9ldxm4WJGxplGz/vVo3E9cYP2UXY2UpSZMEkkXl+oKWr6hUsgeDYjd6OWympU3lFMs7KXI+MEsco7cioyxpV+sf61WQDuBkfZdGRS4xqclctII5gj1WF0qxRqWR/Xrxv8y3io2xsvp8uTFvwn5TkKda3OWKQCWnLSQfJbdfVb9b/AGrUgA6E5H3UxY2SsNya9hknYOGCoyxomo1879Z5A6s4hTVa7Y1u19q7seBNHHKPTBUnBtbVfgTwSRnuOIVPcxzDh7S09iFhO1LhK6HX1vTrGAy0wHs7gVvMex4yxzXDuDlcuX0inmhOYpXsPyuIV7MXi+OnoqBBtDqcPDx98dnjKk6+18gwLFVrvNjsLXaM3jsWxFC19p9Olx4jnxH5moruM9K2bWh6dbyZK4a74meyVC2tkXDLqlgH5XjH3VrRTUJnY51a0m/Uz4td+78TRkLR5cCup4Wla0mjbz49dhd8QGCp1dJy/XOUVst7JRkk07Bb8rxn7qFt6FqNXJdAXtHvM4rPV0mcqNRZILThwIPYrCjQsgkHIOD5LCIN+rrOoVMCKw4tHuv9oKZqbWuGG26+fmYf4VXRWWs3GV0GprmnWsBlhrHfC/gVItcHDLSCPJctWxWvW6rga9iRnkDw+i12c7x/HS0VMq7V248CzGyVvccCpmrtNp8+BI50LvnHD6q9oxcKmkXzhnhnbvQyNe3u05X0VYFrWdPp2h/XrxvPfGD9Vsoi7qv2tk6kmTWlfCex9oKHtbMahDkxBkw+Q8forwinWNTkscxmrzwO3ZonsPzDC+S6i+NkgxIxrh2cMqMtbPabYyfBMbj1jOPss9W5y/VBRWazslK3Jq2GuHwvGD9VEWtH1Crnxazy0e80ZCmq6TOVoIskEHBGD2Kwo0ys7x68fVeUQesjqEwDyIXlEGS0jmFhZBI6pnPMAoMIs+ye4Wd09MH0QeUWVhAREQEREBERAREQEREBERAREQZTJHIoiBvZ5gLPskdQvKyqM7ueRBWCCOaws5I5FBhF63s8wCnsnuFBgEjiDj0W3X1O9W/2rMgHYnIWpjsQUII5hVNJ6vtVdj4TMjlHpgqTr7WU38J4pIj3HEKmoktZuEro1fVqFn/atRk9icFbgIcMgg+i5avvBctVzmGxIz0ctdmP5fHTEVGr7TajFgSOZKB8TeKk6+10RwLFZ7e5Ycq7jN46sM1aCYESwseD8TQVG2Nm9NmyREYyerHYX1r67ptjGLLWHs/gpCOWOQZje1w8jlX8rP8AqKtY2RI41rQPk9qjLGz2pwcoPEb3Ycq/EIp1jU5K5hLDLC7dliew/MML5rqL42SDEjGuHYjKj7GhabYyX12tPdhwp1bnK5+ittjZKE//AG1l7PJ4yiz1rXfFZUUbU13T7fBs4Y74X+yVItIcMtII7hdNvPZYyiIiCIiDWs0KlsYsV2PPfHH6qGt7J1pMmrK+I9ncQrEimo1MrFDt7OajWyRGJWjqw5+yipI3xO3ZGOaexGF1FfKetXsNLZ4WSA/EFOrc5XMUV2t7LUZsmBz4XdAOIULb2Xvw5MO5M0fCcH6LOq6TOVBrK+k9eau7dmiew/MML5KNbEREHuKWSF29FI5ju7ThStTaTUa+A97Zmjo8cfqodFSyVcau1lV4AsxPiPUjiFM1tQp2gDBYjfnpniuarI4HI4HuFZk53jjqSLnlXWtQqkeHZc5o91/tBTNXa48Bbrf90Z/grXaMXiq1Io2prmnW8BlhrXH3X+yVItcHDLSCO4KrGrGURERq2dOpWgfHrxuJ64wfqoizsnUkya0skR7H2grCiajUysUazsxqEOTGGTN+U8fooqatPXduzRPYfmbhdOXmSNkrd2RrXDs4ZWerc5b7cuWVfbWz+nWcnwfDcesZwoi1slI0E1LAd8sgx91OtbnJKrKwpC1o2oVcmSu4tHVvELQIIOCCD2Kjcu2ERFFZ3j3+qzkdW/ReUQZwDyP1TdPZYWc4QEWd7uAU9nzCDCwvW7nkQVggjmEGEREBERAREQEREBERAREQEREBERAWQSORWEQet7uAVj2fMLCIM47EFMHssLIJHI4QEWd49QCnsnnkIPK+kU8sJzFK9h+V2F43exB+ybpHMImkpX2h1ODA8fxB2eMqTr7XO4CzVB82H+FWEV2lwi9V9pNNm4OldEfnCkobVecZimjf6OC5kstc5hy1xB7g4V7MXijqSLndfWNRr48O08gcg7iEV7MfzrQPNbVXULlQ5r2HsHbOQtVFh30slPayZuG24GvHVzDg/RTlTXtOtYDZxG4+7JwXP0V7Vi4SupNcHDLSCFlc1rX7dQ5r2Hs8s5H0U3U2tnZgWoGyD4mnBWuzneO+lvRRlTXtOtENE3hvPuycFJNc1wy0gjuDla2xZYyiIiCIiDxJFHK3dlY17T0cMqKt7N6dYyWMMLu7Dw+imETSzKxTbeylqMk1ZWSt7H2SoazRtVHYsV5GeZHD6rpaw5oc0tcAQehCz1dJy325ai6Ba0HTrWS6ARuPvRnChbeyUjcmpYD/AJXjH3U61uckqsot21pV6of69Z4HxAZC01luXbCIiKLYr3rVU5r2JGeh4fRa6KppYKu1VuLhYjZMO49kqZq7T6fNgSudC75xw+qoyKzKs3jldPhnhnbvQyMeO7TlfRcvjlkidvRPcx3dpwpSrtJqMGGvkEzezxx+qvZzvF8XxFXKu1ld+BahdEfibxCmaupU7YBgsMcT0zg/Ra2xcbG0iIjItaxQqWh/Xrxv8yOK2UQl0gLWytOXjXkfCe36goizsvfiyYdyYeRwforsinWNzkscznqWK5xPA9nqF8F1J7GvbuvaHDsRlRtrQtOs5Lq4Y4+8w4UuLpOX65+itVnZHAJq2fRrx/Kh7Wh6jWyX1y9o6s4rOq3M5Uai9Oa5hw9paexGFhRoQEjqsIg9ZB5gJhvQkeq8og9bp58/RYWF63jjjx9UHlFnLexHos4HQhB5RZII5hYQEREBERAREQEREBERAREQEREBERAWQSOSwiD1nuAU9k9CF5RB6wOhCFpHMLysjI5FBhF63j1AKIjyi2bVG1Udu2YHsPmOH1WshsRERRERBlbFa/bqEGvO9nlnI+i1kVSxZKe1k7MNtwtkHxN4FTdTX9OtYAmEb/hfwVARWZVi8crqTXBwy0gg9QVlc1rX7dQ5rzvZ5Z4fRTVPaywzDbcLZR8TeBVmTF46uCKLp6/p1rAE3hvPuycFJtc1wy0gg9RxWtudljKIiIIiIHMYWja0mhbz41dm8febwK3kRZbFXtbJMOXVLBb8sgz91DWtD1GrkvrlzfiZxC6CinVucljlpBacOBB7FYXSrOn1LTcT12P88YKhrWydaQk1ZnxHs7iFnq3OSKcil7ezuo18lsXjNHWM5+yinsfG4tkY5rh0cMKOksryiIoosgkHIOD5LCIN+rrGoVMCKy4tHR3tBTFXa5wwLdbPzMP8KsIrus3CV0Crr2nWcBs4Y74X8FJNc143muBHcFctX3r3LVY5gnkZ6HgtdmLxfHTEVLq7VXYsCwxkzfoVMVdqKE2BNvwOPxDI+qu3O4WJxF8obEFhu9DKx4+U5X1VYEREHwsVK1lpE8Eb/VqibWy9GbJhL4XeRyFOommplYpdnZW7FkwPZMO36SomxRt1TievIzzLeC6UsEBww4AjzWerc5b7ctRdDtaLp1rJkrNDj7zPZKiLWyLCSalkt+WQZ+6nWtzklVNFK2tn9Sr5Pg+K0dYzlRj43xndkY5p7OGFG5ZXlERRWQSOSZ7gFYRB69k9x6punpx9F5WUBYXrePfI80yDzH0QeUXrA6OH7rBBHMIMIiICIiAiIgIiICIiAiIgIiICIiAiIg6i9jXtLXta5p5gjKiLuzlCzlzGmF/dnL6KZRddPJMrPCkXNmL0GXQbs7B8PA/RQssUkTy2VjmOHRwwuor42Kte0zcsQskHzBZuLpOT65kiuF3ZOvJl1OV0TvhdxCgLui36WTJCXM+NnELOq6zOVHIs9cLCjQiIgIiIC2a1+3UcDXnezyzw+i1kVSzax09rJ2YFuFsg+JnAqcp6/p9vAE3huPuycFQEVlYvHK6k1zXDLSCO4Kyua1r9uoc153s8s5H0U3U2tnYQ23A2QfEzgVrs53jvpb0UXT17T7WA2cRuPuycFJhwcMtII7hXbHWzyyiIiCIiAvjPVr2G7s8LJB8wX2RDaCt7LUZsmBz4HeRyFCW9mL8GTDuztHw8D9FeEUuMbnJY5hNBNA7dmiew/M3C+a6hLFHM0tlja9p6OGVE29mtPsZMbHQu7sPD6LPV0nLPaiorBa2Utx5NeRkzex4FQ1mnaquxPBJH6jgppuZSvgiIeXBRpuQabanhbM1jGROJDXyyNYHemTxXws15qsxisRmN444PbofMKS1evPblhs1YpJqroY2RmNpcGYaAWHHIg54eeVpXK9mB0MVpx3wz2Yy7Loxng0jp3x5oMV4bfgS26zZBHAR4kjTjdzyW9U2i1KvhplEzeWHjP3W0DVoSVasl2NogDhaiMbnbzn8HjgMHAwPUKIt1vyd8wB4e0OBY8cntPFrv3GFWbJV0g1WYPMd2syF7Th2LEZwfMZW7Wu1rc3g1543y727uhwzlU7Wp6A1u6H6aHOE7su8dwyc81raBj/xBRw3h47eH8K9mbxx0gV3bh5b2eHttxj6r4qoQXtRrEiHR7YHHAc+Rw+4XuttZLG7cu1gSOBLeBB9CrMmLx30tiKLq7QadZwBOI3H3ZOCk2Pa9ocxwcO4OVrbnZYyiIiC+U1aCw3E0LHj5hlfVENoSzsxp82TGHwu+U8Pooi1spbjya8rJR2PAq5IpZG5nY5tZ065VP9evI0d8ZC1V1PAIwQCFo2tIoWs+LWZk+80YKnVucv1zpFbrWyUTsmrYc09njI+qh7WzupV8kRCVo6xnKzqtzOVErK9SRviduyMcw9nDC8KNMoDjksIis57gFPZPUhYRUet09MFYWF63j3UHlF6GOo+iYHQoPKLJBHRYQEREBERAREQEREBERB1NERdXjEREBERBH3dFoXcmSENeffZwKr17ZSxFl1OQTN+E8CriilkamdjmM9eas/cnifG4dHDC+S6dPXhsM3J4myN7OGVBXtlK8uXU5DC74Txas3F1x5JfKnIt+7pF2iSZoSWfG3iFoLLpLsRERRERAREQFs1dRuVD/wCXsPaO2cj6LWRVNLLU2tlbhtyAPHxM4H6Kdp65p9vAZOGv+F/ArnqKzJi4SupAggEHIKyucVNUu0yPAneB8JOQp2ntaeDbtfh8cf8AhamTneOxakWlT1WjcA8Cw0u+E8D9FuqsWWCIiIIiICw5rXt3XNDh2IysohtFW9n9OtZPg+E4+9Hw+yhbeyc7CTUmbIPhfwKt6KXGNTOxzqWpqOnOO8yeHPMsJAP7haRPHJPHOcrqJAIwQCD0Kjreh6dayXwBjviZwKnV0nL9c/PHjlCSeZPBWW3snK3Lqk4f8rxg/VQlrTbtQnx672juBkfVZ06TKVq5JJJ4koCQcg4I6hEUafTx5/8A35f/AJD/AJXzOSckknzREGF9q9uzWOa874z5Hh9F8URNJ6rtVdiw2djJm9+RUzV2ooTYEu/C4/EMj6qkItdmbhK6dDZgsN3oZWPHynK+q5dHJJE7eie5h7tOFK1No9Rr4DpBM0dHj+VezneL4viKuVNrKz8C1C+I92+0FNVr9S2M17Eb/IHitbc7jY2UREQREQfOavDO3dmiZIOzhlRNrZnTp8mNr4XfIeH0KmkTSzKxTbWyduPJrSslHY+yVE2dOuVTievI3zxkLpCwQCMEZCz1dJyVy5F0SzpFC1ky1mZPVvA/ZQ9nZKI5dVsOaejXjP3UuNbnJKqSKVtbP6lWyfB8Ro96M5UY9j43br2OaexGFG5ZXlFlYUVnJHIrId3AK8og9eye4TdPTj6LyiDKws7x759VnIPMfRB5ResA8nD9+CwQR0QYREQEREHU0RF1eMREQEREBERAREQYIBBBGQeiir+z9G5lwj8GQ+8z/ClkTSy2eFFv7OXqgLo2+PGOrOY/ZQ5BBIcCCOYK6ktG9pNK+D40ID+j28Cs3F0nJ9c6RT+obL2q+X1XCePtycFBSMfG8skaWuHMEYWdOssvh5REUaEREBERAREQZHA5BwfJSNPXNQqYDJy9g91/ELQjillz4Ub3457rScfReXAtcWuBBHMEYIVSyVcKW1daTDbcboj8Q4hTle1BZZvwSskb8pXMl9a7rDZc1TJ4g4/085+ysyc8uOenTkVKp7T3a7ty2wTNHPI3XBWGjr1C5hol8N592TgtSudwsSiICDyOUVYEXrw34zuOx6FeTwODzQEREBCARggEeaLLWlxw0EnyGUEbb0TT7eS+AMcfeZwKgreycrcuqTB4+F/A/VXAscObXD1C8qajczsc2t6fcpnFiu9g74yPqtVdSc0OaQ4Ag9CFGW9A0+1kmLwnn3o+H2Wbi3OX6oKwrFa2TtsyabxOPhxhyhbFG3VcW2K0sZHPeYQpp1lla6IiiiLK9Mjkk4xse/8A6WkoPCyCWnLSQe4RwLXbrgWnsRgrCCSq65qNXAZYL2j3X8Qpqptaw4FuuW93MOR9FVAC4gNBJJwABxK9zQy15nwzxujkYcOa4YIPmrLWLhK6HV1Sjbx4NhhJ90nBW5kLloJHEc1vVNYv1MCKw4tHuv4ha7MXi+OiIqvU2tHBtyuf+th/hTdTVaNzAgsNLvhPArUrncbG6iIjIiIgL4z1oLDS2eFkg+YL7IhtB2tl6E2TDvwO+U5ChrWy12LJgcyZvkcFXVFOsbnJY5nYqWazt2eB7D5hfBdRcxrxh7Q4diMqNtbP6dZyfB8Nx6xnCnVucv1QEVltbJTNyathr/leMFQ1rTLtT/frvA7gZCzp0mUrTREUaFkEjkVhEGd7uAU4HyWEQet09OPoi8og6miIurxiIiAiIgIiICIiAiIgIiIC1Lum1LzMWIgT8Q4EfuttE0S6U3Udl7EGX03eMz4T+oKAkjfG4tkaWuHMEYXUVqXtOq32btiIE9HDgR+6zcXXHk+ubop/UtmbNfekqHx4xx3feH+VAua5ji17S1w5gjks6dpZfDCIiisrbrV25iMzS58zgIos/qycZPl/dag4EHAOOhU3srA/Utr9PbId8mcPd6N4/wAIO3UKNehVZXqwRwsaAMMaAFW/xD0Snd2es3jExtuq3xGygYJA5g9wrcFXdvJCzZK7G0+3MGxN/wC5w/jK0w4/otOnZuxf6pZdXqF4aXNbvOcewH9z0XddM0yjpdZsFCtHCwfCOJ8yeZXENFrt1LaahUjB8IztaB8oOSf3xld7CkWqvt3oFTU9BtWfBY23WjMkcoGDw4kHuCFxTmu/bVWBV2Y1KUnGK7gPUjA/uuW/h3oEer62ZrTA+rTAe5pHBzvdB/v+yETuxGy2qSxMuajZkgqOGY654ueO5z+kfdX4wUdNrSTmOOKOJpc95HIDzW6BhVH8TL5qbKSRMPtWpGw/tzP2Cqaao1V1y6y5FNvN3wWbpyAM8lcpqtew3E0LHg9wuA6JNZj1WrHXmcwyTMaQDwOXDov0Im2ZjpVNZ0kUx48GTCTgg+7/AMKJAJIAGSeQV6vRiWlNG4Z3mH+yqOjtY/VK4fy3s8e+FqVzyx/UzpugxsY2S4N+Q8dzo3/K9a859SixtRoia52HFgxgYU0vnPDHPE6KVocxwwQVNunX81FR0aH8zqcbZCS0ZccnnhT2paRBZic+JjY5gMggYB9Vo/kZdHvC1E0zVxkOx+poK3bGu0213Oik33key0A8/NKzPyaqqAEuDQCXE4A81ZdO0GKNgkuDxJD7nRv+VD6KA/VoN/B4k/vhXNW1MJPKE2ge+rTjZWAiY92HFgx6BRGjVm29SjbM3faz2yHcc45K3WII7ELopmhzHDiFAtpS6NeFpgdLWwQ4j9TQe4Ulasu9tXabYjS9WryTVoW1bgBIkibgP8iOS5fc2b1CtkxsE7e8fP6Ls1vXKbazjBJ4khGGtAPPzUVs9UE9wzPGWQ8R5u6KaXt+6iJ2R/D+vDAy7rsQmncA5tc/pj/6u5+yvO5Wo1nOayOCGJpcd1oaGgDithV3bkWJdnJqlV7Wy2SGZJx7PMo1ty/abaqxrl95EUQph2IojGMkdyeeSrPU/C+OWKOWfU5GB7Q4xtiGW5GcZJVS0fQbj9o6NOxXcGvnbvHGRug5PH0C7uou/iu6Rslouz7TahgMs0bS7xpjvOGB06BcVu2HW7s9qQ5dNI6Q/ucruW2Nv8jspqMwOHeCWN9Xez/K4MEIIiKNCyOHJYRBIVNZv0z/AEp3Ob8L+IU5T2tYcNuQFp+KPiPoqmisrNwldJq6jTuAfl52OPbOD9FtLloJactJBHUKTpa/qFTAExlYPdk4/da7Od4vi/oq9T2rqygNtRuhd1I4tU5XswWWb8ErJB8pytbcrjY+qIiIIiICEAjBGQiINC3o2n28mWu0O+JvAqEt7I83VLH/AGyD+VakU1GpnY51b0i/Tz41d26PebxC0uXNdRwFpW9Jo2/96u3e+JowVm4uk5frnSK1XNkubqdj/tkH8qCt6Vepk+NXcGj3m8QpqukylaSIijTqaIi6vGIiICIiAiIgIiICIiAiIgIiICIiAtDUdIqag0+NGBJ0kbwIW+iaWXSh6noFuhl7R40PxNHEeoUSupEZUHquzle5vS18QzeQ9lyxcXXHk+qQrp+FdUzbTvnxwrwOOfMkD/KqdylYpTGKxGWnoeh/ddI/CKtu09RtkfrkbGD6DJ/uo67/AB0RUf8AFO0+DQ68bTgSykeecH+CVeFyv8W7e/qdGkDwiiMhHm44/sESNH8Lqf5jak2CPZrQud+54D+V2Jc6/CKBoqalYx7TpGM/YDP8roqpVN/FG5+X2WMAPtWZmsx5D2j/AGC+f4U12x7Myzge3NYdk+QAA/lQ/wCLdnftabSbkkNdIQPMgD+xUp+FlyMaTZ00vBngl8RzR2d/ghQXpcy/F2zmXTaY6B8p+wH8rpq5D+K0hdtNCzPBlZvD1cUpELsXVNva7TYwMhsviO9GjP8AC7wuU/hPQMur2r7m+xBF4bT8zv8AgfddWQqN2iujT9AvWy7dMcLi0/MRgfchcn0faudsjG2onOezBEkTckeZClvxL2mjuvGjUXh8UTt6w8Hg5w5NHp181btgNPq1Nlac0MbPFsM8SV+OLifPy5K7SyXykNC16nrNcOglYZQPaYDx9VLLmH4lwDSNWo6nprjWsThwkMXs7xbjDvvhSmxW3X+rTM03VGhltw/pyt4Nl8iOh/uhpeyFWtf0xkI/N127rScPaOQ81ZVG6/IxmlShx4vw1vrlIzlNxU4XyRytkizvsOQQOSt+manFejAyGzAe0z+R5LGiwRxabCWNGXt3nHqSonaGJta5DYg/pveCSW8OI6q+WZOs2syYyMFQujawbLhXs4EvuuHvf8qaUbl3FZ17TGwH81AMMccPaOQPcLf2bjDdNL+r3k/Tgve0MjGaW9rj7TyA0eecps84O0pmOjnA/VX0zr/SUVZ2olLrcUQPBrM/U/8ACsyqGvuLtXlHwhoH0SeTPw97PRF+otf8AJVsUBs3GA+Z3VgDf3PEqfSrh4U/8TvHfswIK8bnmSdu8G/CMn/C5FVp2bdplWtBJLO84bG0cSu1bUvzJXj7Au/hffZvTa8ELrvhR/mJuBeGjIaOmVNLMv3Tl1jYLaOCobDqbHBoyWMlDngenVVk8Oa/SRXBtsomQ7W6k2Jm6wzkgYwMnnj98qNbQqIijQiIgIiIC9xTSQv34pHMcOrTheEQT1Lai7BhthrZ29zwd9VP0todPtkNMnhPPuycPuqGsKy6YuErqQcHAFpBB6grK5vT1O7SI8Cdwb8J4j6Kw0trWOIbdhLD8bOI+i3MnK8dizoterdrXGb1aZrx2B4rYVc7NCIiAiIgIRkYPJEQR1zRNPuZL4Axx95nAopFE1Gu1EREZEREBERAREQEREBERAREQEREBERAREQEREHwtVILkJisRte09+iktB1DTdldB8CRtl48R0j3Mi3sZP8AgBaiHBGCljWOViR/+pOzvxW//gP+VzfbHV4db2inu1S/wC1rI94YOAO3rlSet7ONl3rGntDX83Rjk70VSex0by14LXA4II5LnY742VcPw+2pq6FLPV1DebWsODhIBnccOHEdsLocm2mzkcRkOqwOHZuSfphcKWU21pYtrtoYda1qS5SjkY3cEbXSfqDR2HTOfVROkapb0a/HdoybkjOBB5OHUEdQtJEV1/SfxI0e1G0agJKU3XeBcw+hH8qqfiBLQ1jWq9zTNQqzMfEI3/1N3cIJ4nPTB+ypayiadS0LaPZnZXQ2U47xtznL5TBGTvPPPBOBjoq/tH+IV/VI3VtPYaVZww4h2ZHj16fsqaiGhXPYzbg6HXGn6hE+amCSxzP1R55jHUKmLChpbdutbi2i1SF9GRhqwR7rC526XOPEnB5dB+y1dlKtOrrNfUNU1OrWhrPEgaJN57yOQACriyqOu6l+JejVmkUY5rknTDdxv1P+FBQ7Ys1qYfnSK8o4MZn2P2Pdc/WE2zcdzTtWk61+UjEE7S+L3XN5t/yF8dZuNvWw6Ijw2DDcnGe5XNdI2gsUsRWMzQDof1N9FcqlqC3CJq8gew9ui1NOWUsmql9KZDFbZPZsRxtjOQN7JJ/ZTNjaGqwEQNfK70wFVkV0zMrPxsXbs16bxJjy/S0cmra0fU/yEjmyAuhfxOObT3Uaiuk7Xe1zbq9At3vzLB5HOVBaxdp2LHiVmOdLjBkPAfsO/molFNNXO2aSWi6i2jO9s2fCkxkjoe6sJ1fT93e/Ms++VTETSTOxIateZdueJEDutbugnmtzRNWhrQfl7JLWg5a7GRx6KDRNHa72tF7X68cThVPiyEcDjACqNypBeBFuNsm8ckkcfqvsiaLlaqmo7KOGX0JN4f8Atv8A4KrlitNWkMc8bmOHQhdOXxtVILcZjsRNkb5jkpcW8eSzy5kis2pbLPZmTT3b4/8Abdz/AGKrksUkMhjlY5j28w4YWdOsyl8PCIijQiIgIiICIiD3HI+JwdG9zHDq04U3R2ouQYbZAnYOp4O+qgUV2lkvl0GhrlG9hrJQyQ+4/gVJLlqkqGu3qOGtk8SMe4/j91qZOV4vjoCKF07aSlbwyU+BL2dyP7qZBBAIIIPULW3KyxlEREEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBQ2t6HHqDDLEAywBwPR3kVMomllscwmikgldFMwse04IK+avuuaPHqUO8wBtho9l3fyKos0UkEzopWlr2nBBXOzT0Y5dnhERRsREQEREBERAREQEREGVtafqFjT7Algdw95p5OWoiqWbdG0vU4NSr+JCcOH6mHm1bq5pStzUbLZ4HEOHMdD5FX/AEzUItRqNmiODyc3q0rcrhnhpuIiKuYiIgIiICIiAiIgIiIC1L+m1dQj3bEYJHJw4EfuttE0S6UTVdn7VAmSPM0HxAcR6qHXUiMjB4hV/WNm4rIdNSAjm5lnRyzcXbHk9VTUX0mhkryuimYWPacEEL5rDsIiICIiAiIgIiICkNP1m7QIEUm9GPcfxH/Cj0RLNr3pm0NO7hkh8Gb4XHgfQqYXLFM6XtBaokMlJmg+Fx4j0K3MnLLj+L0i1NP1GtqEW/WkyRzaeYRa25WNtEREEREBERAREQEREBERAREQEREBERAREQEREBERAREQFB7R6QLtc2IGD8xGM8PeHZTiJVl1XLCOKKY2moinqRfGMRzDeA7HqFDrm9Uu4IiKK3Y6dcUorNm2YhK5zWtbEXfpxnr5rE9JjaQt17Amh8TwnZYWFrsZHDzC+wvmHSasEJiL2ySueHxtdjO7jmPIrVsXbFmNscrx4bCS1jWhrQe+B1Qfahpsl2OV7ZGxhvss3v8A1H4JDB54B/8A4rRPAZUtLdpwx1YIWSyGt7fisl3Q6Q4JOMdOA/Za2qPrTXDZq4bHOPEdGP8A03H9TfrxHkVR9JqFWq8Q3bro5y1ri1kJc1uRkZORngei03xRstGIzsdGHYMsYJBHcDgpgTWGta2prNaSs0YY20RvMHYtcD9shRuqSVpL8j6jQ2I4/S3dBOBkgdATk4Qfd1Gk2o2ydQfuOkMY/wDLnOQAe/mtajVbbsPY6Xw2MjfI5+7ng0Z5L0+WM6RDCHf1G2HvLfItaAfsV9tEnbBde4zRwl0EjGvf+kOLcDPNQfJ0OnhpLdQc52OA/LkZP1Xzo1XXbbK7XBpcHHJ8mk/wpCV1mSJzH6ppzmkcQC0Z/wD1WtossUGqwyTSNjZh4LnchlpAz+5QaA4hSGjak/TbrZASYncJG9x3XykpCOIv/O037o/SyUkn0GFqIlm46jG9skbXscHNcMgjqF6Vd2QvGaq+pI7LojlufhViXWXby5TVEREQREQEREBERAREQEREBERBoappNfUosSDdkH6ZBzCo2oUJ9PsGKdv/AEuHJwXSFrX6MN+sYZ25B5O6tPdSx0wz05qi2tRoTadaMEw82u6OHdaq5u+9iIiKIiICIiAiIgIiIPpBPLWlEsEjmPHIhF80V/U06miIujyCIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiCu7ZRg6fDJji2TH1CpyuW2cgGnQs6ukz9AqasZeXo4/wDkREWXQREQZRYRBnKLCIMosIgzlFhEGVhEQSmzc/ga1Bk8H5Yf3V/XOdGaXavUDRk+KF0ZdMXDl8iIirkIiICIiAiIgIiICIiAiIgIiII3W9NbqNJzQB4rBmM+fZc/c0scWuGCDghdSVF2pqCtqpcwYbMN8evVZyjtx5ekMiIsOwiIgIiICIiAiIgIiIOpoiLq8YiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiLQ1jUWadRdKf1ngwdyiybVja24J9SbA05bA3B9TzUEvUj3SyOkecucckryub04zU0IiKNCIiAiIgIiICIiAiIgIi9wxSTytihaXPccABUTWydQz6n4/uwDP7ngFdloaPp7dOosi5yHjI7uVvrc8PNnluiIirAiIgIiICIiAiIgIiICIiAiIgKq7atGaruvtBWpUzbGwJNQjgaeETOPqVMvDfH/wBK+iIub0iIiAiIgIiICIiAiIg6miIurxiIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIi+Nu1DTgdNYeGsb90HqxPHWhfNM4NYwZJK5/rGpSalbMh4Rt4Mb2H+V9da1iXU5sDLIG/pZ/JUWsWvRhhr9oiIsugiIgIiICIiAiIgIiICItvT9Ps6jN4ddhI9555NRPD4QQyWJWxQsL3u4ABXfQ9EZpsfiy4fYcOJ6N8gtjStJr6ZFiP2pT+qQ8ypBbkcM89/kERFpzEREBERAREQEREBERAREQEREBEXiaWOCJ0srg1jRkkoPnetR0qr7EpADRwHc9lzi1O+1ZknkPtSOyVIa7q79Tn3WZbXYfZb38yopYtejDHQiIsugiIgIiICIiAiIgIiIOpoiLq8YiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgItG9q9KiD40oLujG8SqvqW0tq0DHXHgR9x+o/up2jcwtWHVdcq6ewtDhJN0Y08vVUzUNRs6jNv2H8B+lo5NWq4lxySST3WFi3btjhIIiyo2wiyiDCLKIMIiygwiIgIiygwsgEnAGSVJ6doV28Q4R+HF8b+H2Vr03Q6mn4cG+LL8bhy9ArJaxlnIgNJ2bmslst3MUXMN953+Fbq1aGrCIoGBjB0C+qLcjhllaIiKsiIiAiIgIiICIiAiIgIiICIiAi8ve1jS57g1o5knCr2qbURRb0VACR/LfP6R6d0t0sxtTF/UK2nw+JYeB2aOZVJ1bWLGpyYcSyEfpYD9ytKzYmtTGWeRz3nqV8li13xwkERFHQREUBERAREQEREBERAREQdTREXV4xERAREQEREBERAREQEREBEWC5rRlxAHmgyi0bOr6fW/3LLM9mnJURZ2tgbkVq73nu44CbjUwtWVfKexDXbvTSsYPmOFSLW0mo2AQ2QQtPRg/lRckskrt6V7nnu45Wbk3OK+1yubU0ociuHTu8uAUBe2h1C2C1rxCw+6z/KiUWdukwkZyXHLiSepKlotmddmpi3FpVp0BGQ4M4kdwOf2Wpo4gdrNIWseAbDPEzy3d4ZVi2gm15u304qusi0J8VWtzjc93A5Yx+3NGlbo0Lmo2fy9GtLPN8DG5I9e37r7alo2p6SWDUaU1ff4NLhwJ7AjgrPEdRZslrz2At1Q32i94QG8I8cf08hnOcea1tIdYk2E1wag57qjTGaxlJOJc+7n9sobVy/pt3TJWRX6z4HvbvtD+re6+rdF1N0dN4pS7t04rnh/UPkuj6/TrbS6gdKneyCbTxFO2QnGYHNHiD9ua+Uuox6nNsvZgYGV/9SkjhaBjEbfZb9gibUK9s7rWnVnWbumzxQt/U8gED1xyXhmharJYjrsoyulkg/MMYMZdH8Q4q471GWDamHR33Tb8KQz/AJsgxbocd7c3eR7ZW7WmdBr9CaI4fHs1vtJ6EcQiub1qVq2yd9eB8ja7PElI9xvcr3T029finlp1ZJmV278rmj9A7n6FXyrDWuaNre0FAMZFe054nhB/2pxxcB5HmF9Nlq8uk6Dpbmy1IzenM9ts87WOdBgtaADz4HKG3OqtWxdsMr1IZJ5n/pZG3JK29T0PVdJjbJqNCaBjjgPcMtz2yFatN06bR5trKdEO/PwQgVi39ZiLskt/7cKA05m0NvR78FJs8tF2PzAfgjPTG919ETaPl0u/FeZRfUl/NSAObE0ZcQRkclsX9ntZ02ETXtNsRRE43yMgHzxnH7rpo0x41vUrbH7ll+nRRQln62cPaI8+S8bN0mVPzMYEhruid4xkcXZPQnPVXSXLTntTZXVJ4op54TXryjLXv94eQVp03ZOOrJGBWdNO5m+0vxxHcBWsPjfp1GlPgMni9l/wPB4H+FseGYtQgjk4FtIh2FYxbagpaFqu1pmgc0OO63zPZJ6NqvHvzQPY3lkr7QviFuu6g2xJI1+d2UjB9FtWA2xWuSV5J4XNO9PBJxB49CrtjSNr1Z7JcIIy8t546L06laZO2F0DxI/9LSOa29J3Pyl/xXuYzwxlzRkjitmnahfboVYDI9sT3OL5BgnIPABNpMYjZdPuQs35a72tyBk45lJdPuxML5K0jWjmeeF9JzVNgCF1kyeKMh5G7z8lLTeHDdv22SySSRtw6HGBxHPzCL1iFi065NE2SOu5zHcjw4pHp9yTe8Ou9264tOMcCOi35fyo0qh+ZfO32HY8LHfqvEJgGhN/MOmDfzBwY8ZJx1yh1jQNWwLH5cwv8X4AMlZmpWoC3xoHs3jgEjgSt6iW/ltQdTMhk3Bub3693ryWmx100Zg3eNfI397oemM/wiaev9Kv/wD4r/svhDXmnkcyGNz3NGSB0W45zv8Aw+w7xz+ZPHPktrSo5IKBsRujbJNIAN9wb7DTxQ6zaHiikmkEcTC955NA4r3Yq2KxAsROj3uWeqlCySlrUzoYTLG+Mvw04O4eZH7rXuxtOnRzVp5XVvE3RHLza7yPVDqjURFWRFr2rtWowusTMZ5E8foq/e2saMsoxZ7Pf/hNtTG1ZnvZG0uke1rRzJOFB6htPVr5ZVHjv7jg0KqW9Qt3XZszOcPh5AfstVYuTrjxz23b2qW77v68p3ejG8AFpIiy6SaEREUREQEREBERAREQEREBFkAk4AJJ6BTOnbOXLZDph4ER6u5n0CvlLZPKGa1znBrQSTyA5lF0PT9Ip6e3+jGDJ1e7iUV6uV5W+iItuIiIgIiICIiAiLy8kcuyLJt6WCQ0ZcQB3Krmt6jbg4QzFnPkAqtNdtWCTNYkf6uUuTc49r/Y1fT62fFtMyOjTkqLsbW1WZFeGSQ9z7IVOCys9q6TjkTdjajUJciLw4W/KMn7qLnu2rDiZrEj89C7gvgsKbbmMgiIooiIgIiICmotrNfhptqx6pMImt3W8AXAdg7GfuoVEG5p+p3tMtfmqFqSGY8C5pzveuef7r7apruqavuDUbj5mx8WswGtB74HDKjURNNq9qFvULRtXJ3STFoaX8BkAYA4L6waxqNeOpHDZc1lOQywDdb7DjzPLj+60EVEze2p1y/Vkq2tRkfDJ+toa1u964AyvgNd1TxWy/nH77K35Vp3W8Ivh5f8qNVk2c0+pZfmeBsmCP1EolsiK065qcMFmnp8koitt3Jo2NyHjl281LSaNrOryRy6pMB4cYjZv4y1g5AAK1RxRwjchjaxo6NGF9FqRyvI1K9SSO/FqE1uea7EwRtmOGndHIcOf7qTsXrVpgZPMXMHHdwAPstdFrTncrX2dandOJzK4StAAcOBwF9J9Qt2I/Dmnc5nbAGfotVE0br6STSSMjY9xLYxhg7BfX/ULfjNm8Y+I1u4HEDl2WsiJutma/anDRLMTuu3m4AGD+yT6hbsReHNO5zDzGAM+vdayIbr6RzSRxyMY7DZBh47hYhlkglbLE7de3key8Ig2pdRtzM3JJt5uQcbo5j9l4FywJ3zCU+JIMOOBxC+CJpd19HzSSRRxvdlkYIYOy+te/arReHDMWsznGAeP7hayIm33NyybP5nxXCXlvDAWbN61aaGzylzR05D7LXRDdfTxpPAEG9/TDt4N8+6SzSSsjZI7ebGMMGOQXzTuix9xcstdE5srg6Ju6wjmB2Xi7qMkrGm5YG63iM4aAoXXLU9arvQSFh7gBUea1Ysu3rEz5D8xWbW8cLfa53NpqFfLYXOnf2aOH1UFd2mvWMtiLYGH4eJ+qhFlZtdZhIy+R8ji6R7nuPVxyvKIo2IiICIiAiIgIiICIiAiIgIildBqwWrbWzxh7exJVS3SPhrzWHhkEbpHHo0ZU5R2Vsy4dceIW9Wji5W6KvDW9iCJkbR0aML6LUxcbyX00aGkUqAHgQgv+N3EreRFpzt2IiIj//Z"
-       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;"
+       style="display:none;"
        alt="Café Nossa Pastel — Combinaciones Perfectas">
 
-  <div style="position:absolute;bottom:0;left:0;right:0;z-index:2;text-align:center;padding-bottom:2.5rem;background:linear-gradient(to top,rgba(0,0,0,0.5) 0%,transparent 100%);padding-top:4rem;">
-    <span style="display:block;font-size:0.6rem;letter-spacing:0.3em;color:#A7D0D6;text-transform:uppercase;margin-bottom:0.5rem;">Ver menú</span>
-    <div style="width:1px;height:36px;background:linear-gradient(to bottom,#A7D0D6,transparent);margin:0 auto;animation:pulse-arrow 2s ease infinite;"></div>
+  <!-- pattern azul sutil -->
+  <div style="position:absolute;inset:0;background-image:url('assets/patterns_s_azul.svg');background-repeat:repeat;background-size:100px 100px;opacity:0.12;z-index:1;pointer-events:none;"></div>
+
+  <!-- logo nossa -->
+  <div style="position:relative;z-index:3;text-align:center;padding:0 2.5rem;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.75rem;">
+    <img src="assets/LOGO_NOSSA_COMPLETO.svg" alt="Nossa Café Pastel" style="width:clamp(150px,55vw,220px);height:auto;display:block;margin:0 auto;">
+    <p style="font-size:0.52rem;letter-spacing:0.42em;text-transform:uppercase;color:rgba(26,20,16,0.4);margin:0;">Alta Pastelería · Bogotá</p>
+  </div>
+
+  <!-- CTA ver menu -->
+  <div style="position:relative;z-index:3;text-align:center;padding:0 2rem 2.75rem;width:100%;box-sizing:border-box;">
+    <a href="#combinaciones-menu" style="display:inline-block;border:1px solid rgba(26,20,16,0.28);color:rgba(26,20,16,0.72);font-family:'DM Sans',sans-serif;font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;text-decoration:none;padding:0.9rem 2.25rem;border-radius:100px;background:transparent;min-width:140px;cursor:pointer;">Ver menú</a>
   </div>
 </section>
 
@@ -1106,11 +1162,7 @@
   <div class="brand-statement-inner">
     <p class="bs-label">Nossa · Nuestra filosofía</p>
     <p class="bs-quote">"El secreto de la creatividad está en saber combinar cosas maravillosas."</p>
-    <div class="bs-pills">
-      <span class="bs-pill">Alta Pastelería</span>
-      <span class="bs-pill">Café de Especialidad</span>
-      <span class="bs-pill">Bogotá</span>
-    </div>
+
   </div>
 </section>
 
@@ -1153,12 +1205,12 @@
       </div>
       <p style="font-family:'DM Sans',sans-serif;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.5rem;">Elige tu café</p>
       <div style="display:flex;gap:0.4rem;margin-bottom:1rem;">
-        <button onclick="c1Pick(this,'cappuccino')" class="combo-opt combo-opt-active" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;cursor:pointer;transition:all 0.2s;border:1.5px solid var(--mint);background:rgba(167,208,214,0.15);color:var(--white);">☕ Cappuccino</button>
-        <button onclick="c1Pick(this,'latte')" class="combo-opt" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;cursor:pointer;transition:all 0.2s;border:1.5px solid rgba(167,208,214,0.25);background:transparent;color:rgba(255,255,255,0.5);">☕ Latte</button>
+        <button onclick="c1Pick(this,'cappuccino')" class="combo-opt combo-opt-active" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;cursor:pointer;transition:all 0.2s;border:1.5px solid var(--mint);background:rgba(167,208,214,0.15);color:var(--white);">Cappuccino</button>
+        <button onclick="c1Pick(this,'latte')" class="combo-opt" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;cursor:pointer;transition:all 0.2s;border:1.5px solid rgba(167,208,214,0.25);background:transparent;color:rgba(255,255,255,0.5);">Latte</button>
       </div>
       <p style="font-family:'DM Sans',sans-serif;font-style:italic;font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.5;margin-bottom:1rem;" id="c1-desc">Las especias de la zanahoria encuentran su equilibrio en la espuma del cappuccino. La combinación con la que empezó todo.</p>
       <div style="background:rgba(167,208,214,0.1);border-radius:6px;padding:0.6rem 0.8rem;margin-bottom:0.85rem;display:flex;align-items:center;gap:0.5rem;">
-        <span style="font-size:1rem;">💬</span>
+        
         <p style="font-family:'DM Sans',sans-serif;font-size:0.7rem;color:var(--white);line-height:1.4;">Pídelo como <strong style="color:var(--mint);">"Nossa Raíz"</strong> y obtén el precio de combinación.</p>
       </div>
       <a id="c1-wa" href="#" target="_blank" style="display:block;text-align:center;color:var(--mint);padding:0.5rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(167,208,214,0.3);">¿No estás en Nossa? Pide por WhatsApp →</a>
@@ -1179,12 +1231,12 @@
       </div>
       <p style="font-family:'DM Sans',sans-serif;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.5rem;">Elige tu bebida</p>
       <div style="display:flex;gap:0.4rem;margin-bottom:1rem;">
-        <button onclick="c2Pick(this,'rooibos')" class="combo-opt combo-opt-active" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;cursor:pointer;transition:all 0.2s;border:1.5px solid var(--mint);background:rgba(167,208,214,0.15);color:var(--white);">🍵 Rooibos</button>
-        <button onclick="c2Pick(this,'aromatica')" class="combo-opt" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;cursor:pointer;transition:all 0.2s;border:1.5px solid rgba(167,208,214,0.25);background:transparent;color:rgba(255,255,255,0.5);">🌿 Aromática</button>
+        <button onclick="c2Pick(this,'rooibos')" class="combo-opt combo-opt-active" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;cursor:pointer;transition:all 0.2s;border:1.5px solid var(--mint);background:rgba(167,208,214,0.15);color:var(--white);">Rooibos</button>
+        <button onclick="c2Pick(this,'aromatica')" class="combo-opt" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;cursor:pointer;transition:all 0.2s;border:1.5px solid rgba(167,208,214,0.25);background:transparent;color:rgba(255,255,255,0.5);">Aromática</button>
       </div>
       <p style="font-family:'DM Sans',sans-serif;font-style:italic;font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.5;margin-bottom:1rem;" id="c2-desc">Guayaba colombiana y rooibos sudafricano. Dulzura tropical sin cafeína. La combinación más Nossa que existe.</p>
       <div style="background:rgba(167,208,214,0.1);border-radius:6px;padding:0.6rem 0.8rem;margin-bottom:0.85rem;display:flex;align-items:center;gap:0.5rem;">
-        <span style="font-size:1rem;">💬</span>
+        
         <p style="font-family:'DM Sans',sans-serif;font-size:0.7rem;color:var(--white);line-height:1.4;">Pídelo como <strong style="color:var(--mint);">"Nossa Brisa"</strong> y obtén el precio de combinación.</p>
       </div>
       <a id="c2-wa" href="#" target="_blank" style="display:block;text-align:center;color:var(--mint);padding:0.5rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(167,208,214,0.3);">¿No estás en Nossa? Pide por WhatsApp →</a>
@@ -1205,13 +1257,13 @@
       </div>
       <p style="font-family:'DM Sans',sans-serif;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.5rem;">Elige el perfil del café</p>
       <div style="display:flex;gap:0.4rem;margin-bottom:1rem;">
-        <button onclick="c3Pick(this,'natural')" class="combo-opt combo-opt-active" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.65rem;cursor:pointer;transition:all 0.2s;border:1.5px solid var(--mint);background:rgba(167,208,214,0.15);color:var(--white);">🍒 Natural</button>
-        <button onclick="c3Pick(this,'honey')" class="combo-opt" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.65rem;cursor:pointer;transition:all 0.2s;border:1.5px solid rgba(167,208,214,0.25);background:transparent;color:rgba(255,255,255,0.5);">🍯 Honey</button>
-        <button onclick="c3Pick(this,'lavado')" class="combo-opt" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.65rem;cursor:pointer;transition:all 0.2s;border:1.5px solid rgba(167,208,214,0.25);background:transparent;color:rgba(255,255,255,0.5);">💧 Lavado</button>
+        <button onclick="c3Pick(this,'natural')" class="combo-opt combo-opt-active" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.65rem;cursor:pointer;transition:all 0.2s;border:1.5px solid var(--mint);background:rgba(167,208,214,0.15);color:var(--white);">Natural</button>
+        <button onclick="c3Pick(this,'honey')" class="combo-opt" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.65rem;cursor:pointer;transition:all 0.2s;border:1.5px solid rgba(167,208,214,0.25);background:transparent;color:rgba(255,255,255,0.5);">Honey</button>
+        <button onclick="c3Pick(this,'lavado')" class="combo-opt" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.65rem;cursor:pointer;transition:all 0.2s;border:1.5px solid rgba(167,208,214,0.25);background:transparent;color:rgba(255,255,255,0.5);">Lavado</button>
       </div>
       <p style="font-family:'DM Sans',sans-serif;font-style:italic;font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.5;margin-bottom:1rem;" id="c3-desc">Perfil natural: notas a frutos rojos. La Fresita amplifica esa dulzura frutal con tonka y chocolate blanco.</p>
       <div style="background:rgba(167,208,214,0.1);border-radius:6px;padding:0.6rem 0.8rem;margin-bottom:0.85rem;display:flex;align-items:center;gap:0.5rem;">
-        <span style="font-size:1rem;">💬</span>
+        
         <p style="font-family:'DM Sans',sans-serif;font-size:0.7rem;color:var(--white);line-height:1.4;">Pídelo como <strong style="color:var(--mint);">"Nossa Origen"</strong> y menciona el perfil.</p>
       </div>
       <a id="c3-wa" href="#" target="_blank" style="display:block;text-align:center;color:var(--mint);padding:0.5rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(167,208,214,0.3);">¿No estás en Nossa? Pide por WhatsApp →</a>
@@ -1240,7 +1292,7 @@ function c1Pick(btn, key) {
   }[key];
   document.getElementById('c1-drink').textContent = d.drink;
   document.getElementById('c1-desc').textContent = d.desc;
-  document.getElementById('c1-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Raíz con ' + d.wa + ' 🥕☕');
+  document.getElementById('c1-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Raíz con ' + d.wa);
 }
 function c2Pick(btn, key) {
   comboToggle(btn, document.getElementById('combo-tropical'));
@@ -1252,7 +1304,7 @@ function c2Pick(btn, key) {
   document.getElementById('c2-old').textContent = d.old;
   document.getElementById('c2-price').textContent = d.price;
   document.getElementById('c2-desc').textContent = d.desc;
-  document.getElementById('c2-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Brisa con ' + d.wa + ' 💚');
+  document.getElementById('c2-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Brisa con ' + d.wa);
 }
 function c3Pick(btn, key) {
   comboToggle(btn, document.getElementById('combo-varietal'));
@@ -1263,13 +1315,13 @@ function c3Pick(btn, key) {
   }[key];
   document.getElementById('c3-pastel').textContent = d.pastel;
   document.getElementById('c3-desc').textContent = d.desc;
-  document.getElementById('c3-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Origen perfil ' + d.wa + ' ☕' + d.emoji);
+  document.getElementById('c3-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Origen perfil ' + d.wa);
 }
 // Init WA links on load
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('c1-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Raíz con Cappuccino 🥕☕');
-  document.getElementById('c2-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Brisa con Rooibos 💚');
-  document.getElementById('c3-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Origen perfil Natural (Fresita + Filtrado) ☕🍓');
+  document.getElementById('c1-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Raíz con Cappuccino');
+  document.getElementById('c2-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Brisa con Rooibos');
+  document.getElementById('c3-wa').href = 'https://wa.me/573150686150?text=' + encodeURIComponent('¡Hola Nossa! Quiero un Nossa Origen perfil Natural (Fresita + Filtrado)');
 });
 </script>
 
@@ -1328,7 +1380,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ═══ CAFÉ ═══ -->
 <section class="menu-section" id="cafe">
   <div class="menu-section-header">
-    <div class="menu-section-icon">☕</div>
+    <div class="menu-section-icon"></div>
     <span class="menu-section-title">Bebidas</span>
   </div>
   <h2 class="menu-section-display">Café</h2>
@@ -1400,7 +1452,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ═══ POSTRES ═══ -->
 <section class="menu-section" id="postres">
   <div class="menu-section-header">
-    <div class="menu-section-icon">🍰</div>
+    <div class="menu-section-icon"></div>
     <span class="menu-section-title">Alta Pastelería</span>
   </div>
   <h2 class="menu-section-display">Postres<br>& Tartas</h2>
@@ -1498,7 +1550,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ═══ CROISSANT ═══ -->
 <section class="menu-section" id="croissant">
   <div class="menu-section-header">
-    <div class="menu-section-icon">🥐</div>
+    <div class="menu-section-icon"></div>
     <span class="menu-section-title">Galletas & Croissant</span>
   </div>
   <h2 class="menu-section-display">Galletas<br>& Croissant</h2>
@@ -1518,7 +1570,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ═══ HOJALDRES ═══ -->
 <section class="menu-section" id="hojaldres">
   <div class="menu-section-header">
-    <div class="menu-section-icon">🫓</div>
+    <div class="menu-section-icon"></div>
     <span class="menu-section-title">Salados</span>
   </div>
   <h2 class="menu-section-display">Hojaldres<br>& Empanadas</h2>
@@ -1539,7 +1591,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ═══ DESAYUNOS ═══ -->
 <section class="menu-section" id="desayunos">
   <div class="menu-section-header">
-    <div class="menu-section-icon">🍳</div>
+    <div class="menu-section-icon"></div>
     <span class="menu-section-title">La mañana Nossa</span>
   </div>
   <h2 class="menu-section-display">Desayunos<br>& Sándwiches</h2>
@@ -1552,7 +1604,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ═══ VARIOS ═══ -->
 <section class="menu-section" id="cafenossa">
   <div class="menu-section-header">
-    <div class="menu-section-icon">🫘</div>
+    <div class="menu-section-icon"></div>
     <span class="menu-section-title">Café Nossa</span>
   </div>
   <h2 class="menu-section-display">Café<br>Nossa.</h2>
@@ -1576,7 +1628,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <section class="menu-section" id="varios">
   <div class="menu-section-header">
-    <div class="menu-section-icon">🧃</div>
+    <div class="menu-section-icon"></div>
     <span class="menu-section-title">Envasados</span>
   </div>
   <h2 class="menu-section-display">Bebidas<br>Envasadas.</h2>
@@ -1678,23 +1730,23 @@ document.addEventListener('DOMContentLoaded', function() {
     <div id="antojo-panel" style="display:none;text-align:left;">
       <div style="display:flex;flex-direction:column;gap:0.75rem;">
         <div style="border:1px solid var(--mint-light);border-radius:8px;padding:1rem 1.25rem;">
-          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;color:var(--black);margin-bottom:0.25rem;">☁️ Algo suave</p>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;color:var(--black);margin-bottom:0.25rem;">Algo suave</p>
           <p style="font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text-muted);line-height:1.5;">Torta Zanahoria + Latte. Dulzura cálida sin sobresaltos.</p>
         </div>
         <div style="border:1px solid var(--mint-light);border-radius:8px;padding:1rem 1.25rem;">
-          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;color:var(--black);margin-bottom:0.25rem;">🌿 Algo fresco</p>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;color:var(--black);margin-bottom:0.25rem;">Algo fresco</p>
           <p style="font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text-muted);line-height:1.5;">Postre de Guayaba + Rooibos. Tropical y ligero.</p>
         </div>
         <div style="border:1px solid var(--mint-light);border-radius:8px;padding:1rem 1.25rem;">
-          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;color:var(--black);margin-bottom:0.25rem;">🔥 Algo intenso</p>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;color:var(--black);margin-bottom:0.25rem;">Algo intenso</p>
           <p style="font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text-muted);line-height:1.5;">Tarta de Arándanos + Filtrado Natural. Carácter en cada sorbo.</p>
         </div>
         <div style="border:1px solid var(--mint-light);border-radius:8px;padding:1rem 1.25rem;">
-          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;color:var(--black);margin-bottom:0.25rem;">🤝 Algo para compartir</p>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;color:var(--black);margin-bottom:0.25rem;">Algo para compartir</p>
           <p style="font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text-muted);line-height:1.5;">Éclairs variados + Cappuccinos. Ideal para la mesa.</p>
         </div>
         <div style="border:1px solid var(--mint-light);border-radius:8px;padding:1rem 1.25rem;">
-          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;color:var(--black);margin-bottom:0.25rem;">🏠 Algo para llevar</p>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;color:var(--black);margin-bottom:0.25rem;">Algo para llevar</p>
           <p style="font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text-muted);line-height:1.5;">Café en bolsa Nossa + Tarta grande por encargo.</p>
           <button onclick="scrollTo('cafenossa')" style="display:inline-block;margin-top:0.5rem;background:none;border:none;padding:0;font-family:'DM Sans',sans-serif;font-size:0.7rem;color:var(--mint-dark);text-decoration:none;font-weight:500;cursor:pointer;">Ver Café Nossa →</button>
         </div>
@@ -1849,7 +1901,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- ══════════ BOTÓN SORPRÉNDEME ══════════ -->
 <button id="sp-btn" onclick="spOpen()">
-  <span class="sp-icon">✨</span> Sorpréndeme
+  Sorpréndeme
 </button>
 
 <!-- overlay -->
@@ -1872,22 +1924,22 @@ document.addEventListener('DOMContentLoaded', function() {
     <p class="sp-sub">Elige según tu ánimo — te construimos la combinación perfecta</p>
     <div class="sp-opts cols-3">
       <div class="sp-opt" onclick="spPick(1,'cappuccino')">
-        <span class="sp-emoji">☕</span>Cappuccino
+        Cappuccino
       </div>
       <div class="sp-opt" onclick="spPick(1,'latte')">
-        <span class="sp-emoji">🥛</span>Latte Frío
+        Latte Frío
       </div>
       <div class="sp-opt" onclick="spPick(1,'filtrado')">
-        <span class="sp-emoji">🫖</span>Filtrado
+        Filtrado
       </div>
       <div class="sp-opt" onclick="spPick(1,'tinto')">
-        <span class="sp-emoji">🖤</span>Tinto
+        Tinto
       </div>
       <div class="sp-opt" onclick="spPick(1,'rooibos')">
-        <span class="sp-emoji">🌸</span>Rooibos
+        Rooibos
       </div>
       <div class="sp-opt" onclick="spPick(1,'chocolate')">
-        <span class="sp-emoji">🍫</span>Chocolate
+        Chocolate
       </div>
     </div>
   </div>
@@ -1898,16 +1950,16 @@ document.addEventListener('DOMContentLoaded', function() {
     <p class="sp-sub">Sin presión — cualquiera es una buena decisión</p>
     <div class="sp-opts">
       <div class="sp-opt" onclick="spPick(2,'dulce')">
-        <span class="sp-emoji">🍯</span>Dulce y suave
+        Dulce y suave
       </div>
       <div class="sp-opt" onclick="spPick(2,'frutal')">
-        <span class="sp-emoji">🍓</span>Frutal y fresco
+        Frutal y fresco
       </div>
       <div class="sp-opt" onclick="spPick(2,'intenso')">
-        <span class="sp-emoji">🔥</span>Intenso y profundo
+        Intenso y profundo
       </div>
       <div class="sp-opt" onclick="spPick(2,'ligero')">
-        <span class="sp-emoji">🌿</span>Ligero y elegante
+        Ligero y elegante
       </div>
     </div>
   </div>
@@ -1918,16 +1970,16 @@ document.addEventListener('DOMContentLoaded', function() {
     <p class="sp-sub">El contexto lo es todo</p>
     <div class="sp-opts">
       <div class="sp-opt" onclick="spPick(3,'empezar')">
-        <span class="sp-emoji">🌅</span>Arrancar el día
+        Arrancar el día
       </div>
       <div class="sp-opt" onclick="spPick(3,'capricho')">
-        <span class="sp-emoji">✨</span>Un capricho
+        Un capricho
       </div>
       <div class="sp-opt" onclick="spPick(3,'compartir')">
-        <span class="sp-emoji">🤝</span>Compartir
+        Compartir
       </div>
       <div class="sp-opt" onclick="spPick(3,'trabajar')">
-        <span class="sp-emoji">💻</span>Trabajar largo
+        Trabajar largo
       </div>
     </div>
   </div>
@@ -2096,14 +2148,14 @@ function spShow() {
   const pTotal = (pItem + pBeb).toLocaleString('es-CO');
 
   document.getElementById('sp-res-combo').textContent =
-    item.emoji + ' ' + item.nombre + '  +  ' + beb.nombre;
+    item.nombre + '  +  ' + beb.nombre;
   document.getElementById('sp-res-why').textContent = spGetWhy(b, itemKey);
   document.getElementById('sp-res-price').textContent =
     item.precio + ' + ' + beb.precio + ' = $' + pTotal;
 
   const wa = document.getElementById('sp-res-wa');
   const msg = encodeURIComponent(
-    '¡Hola Nossa! Quiero pedir una combinación: ' + item.nombre + ' + ' + beb.nombre + ' 🎉'
+    '¡Hola Nossa! Quiero pedir una combinación: ' + item.nombre + ' + ' + beb.nombre + ''
   );
   wa.onclick = () => window.open('https://wa.me/573150686150?text='+msg,'_blank');
 
@@ -2205,10 +2257,10 @@ const DM_CONFIG = {
 
   // Ruta de la imagen del producto (relativa al HTML)
   // Reemplazar por la imagen de la nueva campaña
-  imgSrc:   "assets/producto-dia-madre-opt.jpg",
+  imgSrc:   "assets/campana-dia-madre.webp",
 
   // Texto alternativo de la imagen (accesibilidad y SEO)
-  imgAlt:   "Torta especial Día de la Madre — Nossa Pastel",
+  imgAlt:   "Día de la Madre — Nossa Pastel",
 
 };
 </script>
