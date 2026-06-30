@@ -1221,7 +1221,7 @@
       <span style="display:inline-block;background:var(--mint);color:var(--black);font-size:0.45rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:100px;font-weight:500;margin-bottom:0.75rem;">Nossa Brisa</span>
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
         <div>
-          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:1.2rem;color:var(--white);line-height:1.2;">Postre de Guayaba</p>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:1.2rem;color:var(--white);line-height:1.2;">Manzana verde</p>
           <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:0.85rem;color:var(--mint);margin-top:0.15rem;" id="c2-drink">+ Rooibos</p>
         </div>
         <div style="text-align:right;">
@@ -1234,7 +1234,7 @@
         <button onclick="c2Pick(this,'rooibos')" class="combo-opt combo-opt-active" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;cursor:pointer;transition:all 0.2s;border:1.5px solid var(--mint);background:rgba(167,208,214,0.15);color:var(--white);">Rooibos</button>
         <button onclick="c2Pick(this,'aromatica')" class="combo-opt" style="flex:1;padding:0.5rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:0.7rem;cursor:pointer;transition:all 0.2s;border:1.5px solid rgba(167,208,214,0.25);background:transparent;color:rgba(255,255,255,0.5);">Aromática</button>
       </div>
-      <p style="font-family:'DM Sans',sans-serif;font-style:italic;font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.5;margin-bottom:1rem;" id="c2-desc">Guayaba colombiana y rooibos sudafricano. Dulzura tropical sin cafeína. La combinación más Nossa que existe.</p>
+      <p style="font-family:'DM Sans',sans-serif;font-style:italic;font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.5;margin-bottom:1rem;" id="c2-desc">Manzana, hierbabuena y rooibos sudafricano. Dulzura tropical sin cafeína. La combinación más Nossa que existe.</p>
       <div style="background:rgba(167,208,214,0.1);border-radius:6px;padding:0.6rem 0.8rem;margin-bottom:0.85rem;display:flex;align-items:center;gap:0.5rem;">
         
         <p style="font-family:'DM Sans',sans-serif;font-size:0.7rem;color:var(--white);line-height:1.4;">Pídelo como <strong style="color:var(--mint);">"Nossa Brisa"</strong> y obtén el precio de combinación.</p>
@@ -1310,7 +1310,7 @@ function c3Pick(btn, key) {
   comboToggle(btn, document.getElementById('combo-varietal'));
   var d = {
     natural: { pastel:'Fresita', desc:'Perfil natural: notas a frutos rojos. La Fresita amplifica esa dulzura frutal con tonka y chocolate blanco.', wa:'Natural (Fresita + Filtrado)', emoji:'🍓' },
-    honey: { pastel:'Postre de Guayaba', desc:'Perfil honey: dulzura melosa y cuerpo redondo. La guayaba responde con la misma intensidad tropical.', wa:'Honey (Guayaba + Filtrado)', emoji:'🍯' },
+    honey: { pastel:'Manzana verde', desc:'Perfil honey: dulzura melosa y cuerpo redondo. La manzan responde con la misma intensidad tropical.', wa:'Honey (manzana + Filtrado)', emoji:'🍯' },
     lavado: { pastel:'Postre de Mango', desc:'Perfil lavado: limpio, cítrico, transparente. El mango aporta acidez brillante que amplifica cada nota.', wa:'Lavado (Mango + Filtrado)', emoji:'🥭' }
   }[key];
   document.getElementById('c3-pastel').textContent = d.pastel;
@@ -1469,7 +1469,7 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 
   <div class="item favorito" style="flex-direction:column;padding:0;overflow:hidden;">
-    <div style="padding:0.75rem;display:flex;justify-content:space-between;align-items:flex-start;"><div><span class="item-badge">★ Nossa Favorito</span><p class="item-name">Manzana</p><p class="item-desc">Manzana. manzana y hierbabuena.</p></div><p class="item-price">$15.500</p></div>
+    <div style="padding:0.75rem;display:flex;justify-content:space-between;align-items:flex-start;"><div><span class="item-badge">★ Nossa Favorito</span><p class="item-name">Manzana verde</p><p class="item-desc">Manzana y hierbabuena.</p></div><p class="item-price">$15.500</p></div>
   </div>
 
   <div class="item"><div><p class="item-name">Cheesecake Lulo</p><p class="item-desc">Queso fresco, lulo y nuez. Una combinación que no pide permiso.</p></div><p class="item-price">$15.500</p></div>
